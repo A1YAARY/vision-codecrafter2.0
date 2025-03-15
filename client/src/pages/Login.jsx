@@ -88,7 +88,7 @@ function Login() {
       <div className="flex flex-wrap w-4/12  max-w-5xl bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="w-full p-8 flex flex-col justify-center overflow-hidden">
           <h2 className="text-3xl font-bold text-orange-500 mb-6">
-            Welcome to stocks
+            Welcome to VisionInvest
           </h2>
           <form 
           // onSubmit={handleSubmit} 

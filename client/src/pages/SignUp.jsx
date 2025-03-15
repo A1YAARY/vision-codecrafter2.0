@@ -59,10 +59,10 @@ function SignUp() {
         </div>
       )} */}
       
-      <div className="flex w-10/12 lg:w-6/12 max-w-6xl bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="w-full lg:w-6/12 p-8 flex flex-col justify-center">
+      <div className="flex w-4/12  max-w-6xl bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="w-full p-8 flex flex-col justify-center">
           <h2 className="text-3xl font-bold text-orange-500 mb-6">
-            Welcome to Seatr
+            Welcome to VisionInvest
           </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
