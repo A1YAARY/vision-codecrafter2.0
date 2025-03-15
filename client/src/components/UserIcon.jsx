@@ -1,8 +1,8 @@
 import React from 'react';
 
-const UserIcon = ({ name = "John Doe" }) => {
+const UserIcon = ({data}) => {
  
-  const firstLetter = name.charAt(0);
+  const firstLetter = data.name.charAt(0);
   
   return (
     <div className=''>
@@ -13,7 +13,7 @@ const UserIcon = ({ name = "John Doe" }) => {
       </div>
       
       
-      <h2 className="text-gray-700 text-lg font-medium">{name}</h2>
+      <h2 className="text-gray-700 text-lg font-medium">{data.name}</h2>
     </div>
     </div>
   );

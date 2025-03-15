@@ -3,11 +3,14 @@ import UserDetailsCard from "../components/UserDetailsCard";
 import Navbar from "../components/Navbar";
 import UserIcon from "../components/UserIcon";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Sidebar from "../components/sidebar";
 
 
 function UserDetails() {
   const navigate = useNavigate();
+  const userData = useSelector((state) => state.user.user);
+  console.log(userData)
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
   const toggleSubmenu = () => {
@@ -43,9 +46,9 @@ function UserDetails() {
         <Navbar />
         <div className=" flex items-center justify-center mt-6 mb-6">
           <div className="flex flex-col w-5/12  bg-white rounded-lg shadow-sm border border-gray-100">
-            <UserIcon />
+            <UserIcon data={userData}/>
             <div className="">
-              <UserDetailsCard />
+              <UserDetailsCard data={userData}/>
             </div>
           </div>
         </div>

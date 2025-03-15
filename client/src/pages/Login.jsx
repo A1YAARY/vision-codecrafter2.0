@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-// import { setUser } from "../redux/userSlice";
+import { setUser } from "../redux/userSlice";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -14,8 +14,8 @@ function Login() {
   const [success, setSuccess] = useState(null);
 
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -27,50 +27,45 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setError(null);
-    setSuccess(null);
-
+    setError("");
+    setSuccess("");
+  
     try {
-      const response = await axios.post("/api/users/login", formData, {
-        withCredentials: true,
-      });
-
-      const { token, user } = response.data;
-      const { role, id, name } = user;
-      console.log(response.data);
-
-      setSuccess("Login Successful!");
-      localStorage.setItem("token", token);
-
-      // Dispatch user data to Redux
-      dispatch(
-        setUser({
-          token,
-          role,
-          id,
-          name,
-          email,
-        })
-      );
-
-      // Redirect based on role
-      setTimeout(() => {
-        setSuccess(null);
-        if (role === 1) {
-          navigate("/dashboard");
-        } else if (role === 2) {
-          navigate("/dashboard");
-        } else if (role === 3) {
-          navigate("/dashboard");
+      const response = await axios.post(
+        "http://localhost:3000/api/user/login",
+        {
+          email: formData.email,
+          password: formData.password
+        },
+        {
+withCredentials :true
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      }, 1000);
-    } catch (error) {
-      setError(error.response?.data?.message || "Login Failed");
-      setTimeout(() => setError(null), 3000);
-    } finally {
-      setIsLoading(false);
+      );
+      
+      // With axios, the response data is already available as response.data
+      const data = response.data;
+      console.log(data)
+      dispatch(setUser(data.user))
+  
+      // Axios handles non-2xx responses as errors, so if we get here, it was successful
+      setSuccess("Login successful!");
+      localStorage.setItem("token", data.token);
+      setTimeout(() => navigate("/dashboard"), 1000);
+      
+    } catch (err) {
+      // Error handling for axios
+      const errorMessage = err.response?.data?.message || "Something went wrong. Please try again.";
+      setError(errorMessage);
     }
+  
+    setIsLoading(false);
   };
+
 
   return (
     <div className="relative flex items-center justify-center h-screen bg-cover bg-center overflow-hidden ">
@@ -91,8 +86,8 @@ function Login() {
             Welcome to VisionInvest
           </h2>
           <form 
-          // onSubmit={handleSubmit} 
-          className="space-y-6">
+          
+          className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -102,10 +97,10 @@ function Login() {
               </label>
               <input
                 type="email"
-                // name="email"
+                name="email"
                 // id="email"
-                // value={formData.email}
-                // onChange={handleChange}
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
                 placeholder="Enter Email"
                 required
@@ -120,10 +115,10 @@ function Login() {
               </label>
               <input
                 type="password"
-                // name="password"
-                // id="password"
-                // value={formData.password}
-                // onChange={handleChange}
+                name="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
                 placeholder="Enter A Strong Password"
                 required
@@ -132,7 +127,6 @@ function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              onClick={() => navigate("/dashboard")}
               className="w-full bg-orange-500 text-white font-medium rounded-lg text-sm px-5 py-3 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 flex items-center justify-center"
             >
               {isLoading ? (

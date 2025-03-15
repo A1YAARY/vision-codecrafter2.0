@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserDetailsCard = () => {
+const UserDetailsCard = ({data}) => {
   return (
    
     <div className=" px-4">
@@ -11,7 +11,7 @@ const UserDetailsCard = () => {
           <div className="flex">
             <input 
               type="text"
-              value="John Doe"
+              value={data.name}
               className="w-full px-3 py-2 border-b border-gray-200 focus:outline-none focus:border-blue-500"
               readOnly
             />
@@ -24,7 +24,7 @@ const UserDetailsCard = () => {
           <label className="block text-sm text-[#10002B] uppercase">PAN</label>
           <input 
             type="text"
-            value="*******3434"
+            value={data.pan}
             className="w-full px-3 py-2 border-b border-gray-200 focus:outline-none focus:border-blue-500"
             readOnly
           />
@@ -40,13 +40,22 @@ const UserDetailsCard = () => {
             readOnly
           />
         </div>
+        <div className="space-y-1">
+          <label className="block text-sm text-[#10002B] uppercase">Balance</label>
+          <input 
+            type="text"
+            value={data.balance} 
+            className="w-full px-3 py-2 border-b border-gray-200 focus:outline-none focus:border-blue-500"
+            readOnly
+          />
+        </div>
         
         
         <div className="space-y-1">
           <label className="block text-sm text-[#10002B] uppercase">GENDER</label>
           <input 
             type="text"
-            value="Male"
+            value={data.gender}
             className="w-full px-3 py-2 border-b border-gray-200 focus:outline-none focus:border-blue-500"
             readOnly
           />
@@ -58,7 +67,7 @@ const UserDetailsCard = () => {
           <div className="flex">
             <input 
               type="text"
-              value="******6960"
+              value={data.phone}
               className="w-full px-3 py-2 border-b border-gray-200 focus:outline-none focus:border-blue-500"
               readOnly
             />
@@ -75,7 +84,7 @@ const UserDetailsCard = () => {
           <div className="flex">
             <input 
               type="text"
-              value="sdfghj@gmail.com"
+              value={data.email}
               className="w-full px-3 py-2 border-b border-gray-200 focus:outline-none focus:border-blue-500"
               readOnly
             />
@@ -91,7 +100,7 @@ const UserDetailsCard = () => {
           <div className="flex">
             <input 
               type="text"
-              value="111108877855462170"
+              value={data.dmat_acc_no}
               className="w-full px-3 py-2 border-b border-gray-200 focus:outline-none focus:border-blue-500"
               readOnly
             />
