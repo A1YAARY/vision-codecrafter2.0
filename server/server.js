@@ -1,8 +1,12 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+require("dotenv").config();
+
 const userRoutes = require('./routes/userRoutes');
 const priceRoutes = require('./routes/priceRoutes');
+const investmentRoutes = require('./routes/investmentRoute');
+const stockRoutes = require('./routes/stockRoutes'); // ✅ Import the new stock route
 
 const app = express();
 const FRONTEND_ORIGIN = 'http://localhost:5173'; // Update with your frontend URL
@@ -20,6 +24,8 @@ app.use(
 // Routes
 app.use('/api/user', userRoutes);
 app.use('/api/price', priceRoutes);
+app.use('/api/investments', investmentRoutes);
+app.use('/api/stock', stockRoutes); // ✅ Add stock API route
 
 // Test Route
 app.get('/', (req, res) => {
