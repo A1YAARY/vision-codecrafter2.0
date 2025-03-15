@@ -20,7 +20,6 @@ function SignUp() {
       [name]: value
     }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -28,16 +27,30 @@ function SignUp() {
     setSuccess(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/users/register', formData);
+      const response = await axios.post('http://localhost:3000/api/user/register', {
+        "name": formData.name,
+        "balance": 10000,
+        "email": formData.email,
+        "password": formData.password,
+        "dmat_acc_no": formData.dmat,
+        "pan": formData.pan,
+        "gender": formData.gender,
+        "phone": formData.phone
+      }, {
+        withCredentials: true
+      });
+      
       setSuccess('Signup Successful!');
       setFormData({
         name: "",
         email: "",
         password: "",
         phone: "",
-        role: 3
+        role: 3,
+        dmat: "",
+        pan: "",
+        gender: ""
       });
-      setTimeout(() => setSuccess(null), 3000);
     } catch (error) {
       setError(error.response?.data?.message || 'Signup Failed');
       setTimeout(() => setError(null), 3000);
@@ -65,81 +78,123 @@ function SignUp() {
             Welcome to VisionInvest
           </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700">
-                Full Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
-                placeholder="Enter Your Full Name"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-700">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                id="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
-                placeholder="Enter Mobile Number"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
-                placeholder="Enter Email"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
-                placeholder="Enter A Strong Password"
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-orange-500 text-white font-medium rounded-lg text-sm px-5 py-3 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 flex items-center justify-center"
-            >
-              {isLoading ? (
-                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-              ) : (
-                'Sign Up'
-              )}
-            </button>
-          </form>
+        <div>
+          <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700">
+            Full Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
+            placeholder="Enter Your Full Name"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-700">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            name="phone"
+            id="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
+            placeholder="Enter Mobile Number"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
+            placeholder="Enter Email"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-700">
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
+            placeholder="Enter Password"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="dmat" className="block mb-2 text-sm font-medium text-gray-700">
+            DMAT Account Number
+          </label>
+          <input
+            type="text"
+            name="dmat"
+            id="dmat"
+            value={formData.dmat}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
+            placeholder="Enter DMAT Account Number"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="pan" className="block mb-2 text-sm font-medium text-gray-700">
+            PAN Number
+          </label>
+          <input
+            type="text"
+            name="pan"
+            id="pan"
+            value={formData.pan}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
+            placeholder="Enter PAN Number"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-700">
+            Gender
+          </label>
+          <select
+            name="gender"
+            id="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <button
+          type="submit"
+          disabled={isLoading}
+          className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transition"
+        >
+          {isLoading ? 'Signing Up...' : 'Sign Up'}
+        </button>
+      </form>
           <p className="mt-4 text-sm text-gray-500 text-center">
             Already Have An Account?{" "}
             <a href="/" className="text-orange-500 hover:underline font-medium">

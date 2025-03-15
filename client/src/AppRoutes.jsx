@@ -9,7 +9,7 @@ import MutualFund from "./pages/MutualFund";
 import Bonds from "./pages/Bonds";
 import Explore from "./pages/Explore";
 import LandingPage from "./pages/Landing";
-
+import Insurance from "./pages/Insurance";
 
 const AppRoutes = () => {
   return (
@@ -24,6 +24,7 @@ const AppRoutes = () => {
       <Route path="/bonds" element={<Bonds/>} />
       <Route path="/explore" element={<Explore/>} />
       <Route path="/landing" element={<LandingPage />} />
+      <Route path="/insurance" element={<Insurance />} />
      
     </Routes>
   );
