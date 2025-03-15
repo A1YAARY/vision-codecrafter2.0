@@ -1,8 +1,8 @@
-import express from 'express';
-import cookieParser from 'cookie-parser';
-import cors from 'cors';
-import userRoutes from './routes/userRoutes.js';
-import priceRoutes from './routes/priceRoutes.js';
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const userRoutes = require('./routes/userRoutes');
+const priceRoutes = require('./routes/priceRoutes');
 
 const app = express();
 const FRONTEND_ORIGIN = 'http://localhost:3000'; // Update with your frontend URL

@@ -1,12 +1,10 @@
-const pool = require('../config/db');
-
-const { paginate } = require('../utils/pagination');
+const { query } = require('../config/db');
 
 // Function to find a user by email
 const findUserByEmail = async (email) => {
     try {
-        const query = 'SELECT * FROM users WHERE email = $1::text;';
-        const result = await pool.query(query, [email]);
+        const sql = 'SELECT * FROM users WHERE email = $1;';
+        const result = await query(sql, [email]);
         return result.rows[0];
     } catch (err) {
         console.error(err);
@@ -16,8 +14,8 @@ const findUserByEmail = async (email) => {
 
 const getUserById = async (id) => {
     try {
-        const query = 'SELECT * FROM users WHERE user_id = $1;';
-        const result = await pool.query(query, [id]);
+        const sql = 'SELECT * FROM users WHERE id = $1;';
+        const result = await query(sql, [id]);
         return result.rows[0];
     } catch (err) {
         console.error(err);
@@ -26,31 +24,12 @@ const getUserById = async (id) => {
 };
 
 // Function to create a new user
-const createUser = async (
-    name,
-    dob,
-    email,
-    password,
-    role,
-    pan,
-    gender,
-    phone
-) => {
+const createUser = async (name, balance, email, password_hash, dmat_acc_no, pan, gender, phone) => {
     try {
-        const query =
-            'INSERT INTO users(name, dob, email, password, role, pan, gender, phone) VALUES($1, $2, $3, $4,$5,$6,$7,$8) RETURNING user_id, name, dob, email, role, pan, gender, phone ';
-        const newUser = await pool.query(query, [
-            name,
-            dob,
-            email,
-            password,
-            role,
-            pan,
-            gender,
-            phone
-        ]);
-
-
+        const sql = `INSERT INTO users (name, balance, email, password_hash, dmat_acc_no, pan, gender, phone)
+                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
+                     RETURNING id, name, balance, email, dmat_acc_no, pan, gender, phone;`;
+        const newUser = await query(sql, [name, balance, email, password_hash, dmat_acc_no, pan, gender, phone]);
         return newUser.rows[0];
     } catch (err) {
         console.error(err);
@@ -58,84 +37,80 @@ const createUser = async (
     }
 };
 
-const getAllStudents = async (role) => {
-    const query =
-        `SELECT user_id, name, dob, email, role, pan, gender, phone   
-  FROM users 
-  WHERE role = $1 
-  ORDER BY user_id ASC`
-
-    const result = await pool.query(query, [role]);
-    return result.rows;
-};
-
-// Function to update a user
-const updateUser = async (id, updatedFields) => {
-    const query = `UPDATE users SET ${Object.keys(updatedFields).map((key, index) => `${key} = $${index + 1}`).join(', ')} WHERE user_id = $${Object.keys(updatedFields).length + 1} RETURNING *`;
-    const values = [...Object.values(updatedFields), id];
-
-    const result = await pool.query(query, values);
-    return result.rows[0]; // Return the updated user
-};
-
-
-// Function to delete a user
-const deleteUser = async (id) => {
-    console.log('Delete user id:', id);
+const getAllUsersByRole = async (role) => {
     try {
-        const query = `DELETE FROM users WHERE user_id=$1 RETURNING *`;
-        const result = await pool.query(query, [id]);
-        return result.rows[0];
+        const sql = `SELECT user_id, name, balance, email, dmat_acc_no, pan, gender, phone FROM users WHERE role = $1 ORDER BY user_id ASC;`;
+        const result = await query(sql, [role]);
+        return result.rows;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw err;
     }
 };
 
-
-// const getDepartmentUsers = async (role, department) => {
-//     const query =
-//         `SELECT user_id, name, email, role,year,department,rollno, phone FROM users where role =$1 AND 
-//     department = $2  ORDER BY user_id ASC  `;
-
-//     const result = await pool.query(query, [role, department]);
-//     return result.rows;
-// }
-
-
-const getAllRoleUsers = async (role) => {
-    const query =
-        'SELECT user_id, name, dob, email, role, pan, gender, phone FROM users where role =$1 ORDER BY user_id ASC';
-    const result = await pool.query(query, [role]);
-    return result.rows;
-};
-
-const getUserCount = async () => {
-    const query =
-        'SELECT COUNT(*) FROM users WHERE role =$1 ';
-    const user_admin = await pool.query(query, ['Admin']);
-    const user_user = await pool.query(query, ['Users']);
-    return { TPO: user_admin.rows[0].count, Students: user_user.rows[0].count };
-};
-
-
-
-const getUsers = async () => {
+// Function to update a user
+const updateUser = async (id, updatedFields) => {
     try {
-        const result = await pool.query('SELECT user_id, name, email FROM users'); // Selecting relevant fields
-        return result.rows;
+        const fields = Object.keys(updatedFields);
+        const values = Object.values(updatedFields);
+
+        if (fields.length === 0) {
+            throw new Error('No fields to update');
+        }
+
+        const setClause = fields.map((key, index) => `${key} = $${index + 1}`).join(', ');
+        const sql = `UPDATE users SET ${setClause} WHERE user_id = $${fields.length + 1} RETURNING *;`;
+        
+        const result = await query(sql, [...values, id]);
+        return result.rows[0];
     } catch (err) {
-        throw new Error('Error fetching users: ' + err.message);
+        console.error(err);
+        throw err;
     }
 };
 
+// Function to delete a user
+const deleteUser = async (id) => {
+    try {
+        const sql = `DELETE FROM users WHERE user_id = $1 RETURNING *;`;
+        const result = await query(sql, [id]);
+        return result.rows[0];
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+};
+
+const getUserCount = async () => {
+    try {
+        const sql = 'SELECT COUNT(*) FROM users WHERE role = $1;';
+        const result = await query(sql, ['user']);
+        return { Users: result.rows[0].count };
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+};
+
+const getUsers = async () => {
+    try {
+        const sql = 'SELECT user_id, name, email FROM users;';
+        const result = await query(sql);
+        return result.rows;
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+};
 
 const getUserByEmail = async (email) => {
     try {
-        const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
-        return result.rows[0];  // Return the first user, or null if not found
+        const sql = 'SELECT * FROM users WHERE email = $1;';
+        const result = await query(sql, [email]);
+        return result.rows[0];
     } catch (err) {
-        throw new Error('Error fetching user by email: ' + err.message);
+        console.error(err);
+        throw err;
     }
 };
 
@@ -144,11 +119,9 @@ module.exports = {
     createUser,
     updateUser,
     deleteUser,
-    // getDepartmentUsers,
     getUserCount,
-    getAllStudents,
+    getAllUsersByRole,
     getUserById,
     getUsers,
     getUserByEmail,
 };
-
