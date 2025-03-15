@@ -1,33 +1,20 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
 const UserDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navbar */}
-      <nav className="flex items-center justify-between p-4 bg-white shadow-md">
-        <div className="flex items-center gap-4">
-          <div className="text-xl font-bold text-blue-500">VisionInvest</div>
-          <a href="#" className="text-green-500">Explore</a>
-          <a href="#" className="text-gray-700">Dashboard</a>
-        </div>
-        <input
-          type="text"
-          placeholder="Search Groww..."
-          className="border p-2 rounded-lg"
-        />
-        <div className="flex items-center gap-4">
-          <button className="p-2 bg-gray-200 rounded-lg">🔔</button>
-          <button className="p-2 bg-gray-200 rounded-lg">🛒</button>
-          <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">S</div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Main Content */}
       <div className="p-6">
         {/* Stocks Section */}
         <div className="flex justify-between">
           <h2 className="text-lg font-semibold">Indices</h2>
-          <a href="#" className="text-green-500">All indices</a>
+          <a href="#" className="text-green-500">
+            All indices
+          </a>
         </div>
         <div className="grid grid-cols-3 gap-4 mt-4">
           <div className="p-4 bg-white shadow rounded-lg">
@@ -75,7 +62,9 @@ const UserDashboard = () => {
         {/* Investments Section */}
         <div className="flex justify-between items-center mt-6">
           <h2 className="text-lg font-semibold">Your Investments</h2>
-          <a href="#" className="text-green-500">Dashboard</a>
+          <a href="#" className="text-green-500">
+            Dashboard
+          </a>
         </div>
         <div className="p-4 bg-white shadow rounded-lg mt-4 flex justify-between">
           <div>
@@ -91,7 +80,9 @@ const UserDashboard = () => {
         {/* Watchlist Section */}
         <div className="flex justify-between items-center mt-6">
           <h2 className="text-lg font-semibold">All Watchlists</h2>
-          <a href="#" className="text-green-500">View all</a>
+          <a href="#" className="text-green-500">
+            View all
+          </a>
         </div>
         <div className="p-4 bg-white shadow rounded-lg mt-4 flex justify-between">
           <p>My Watchlist</p>
@@ -102,4 +93,4 @@ const UserDashboard = () => {
   );
 };
 
-export default UserDashboard;
+export default UserDashboard;

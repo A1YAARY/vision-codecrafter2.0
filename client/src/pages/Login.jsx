@@ -132,6 +132,7 @@ function Login() {
             <button
               type="submit"
               disabled={isLoading}
+              onClick={() => navigate("/dashboard")}
               className="w-full bg-orange-500 text-white font-medium rounded-lg text-sm px-5 py-3 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 flex items-center justify-center"
             >
               {isLoading ? (

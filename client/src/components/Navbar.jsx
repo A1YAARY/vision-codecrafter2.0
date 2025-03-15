@@ -3,10 +3,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import logo from "../assets/Logo.svg";
 import userIcon from "../assets/user.svg";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const userDropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   // Get userName and email from Redux
   //   const userName = useSelector((state) => state.user.name);
@@ -50,9 +52,8 @@ function Navbar() {
           className="border p-2 rounded-lg"
         />
         <div className="flex items-center gap-4">
-          <button className="p-2 bg-gray-200 rounded-lg">🔔</button>
-          <button className="p-2 bg-gray-200 rounded-lg">🛒</button>
-          <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
+          <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full"
+          onClick={() => navigate("/userdetails")}>
             S
           </div>
         </div>
