@@ -3,7 +3,7 @@ import React from 'react';
 const UserDetailsCard = () => {
   return (
    
-    <div className="max-w-4/12 mx-auto p-6 ">
+    <div className=" px-4">
       <div className=" g-x-6 g-y-6">
         
         <div className="space-y-1 ">

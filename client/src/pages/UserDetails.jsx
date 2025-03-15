@@ -8,13 +8,14 @@ function UserDetails() {
     <div>
 
         <Navbar/>
-        <div className='bg-white rounded-lg shadow-sm border border-gray-100'>
+        <div className=' flex items-center justify-center mt-6 mb-6'>
+        <div className='flex flex-col w-5/12  bg-white rounded-lg shadow-sm border border-gray-100'>
         <UserIcon/>
         <div className=''>
         <UserDetailsCard />
         </div>
         </div>
-        
+        </div>
 
     </div>
   )
