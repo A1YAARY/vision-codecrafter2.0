@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import BrushBarChart from "../components/analytics/BrushBarChart";
+
 
 const UserDashBoard = () => {
   const navigate = useNavigate();
@@ -9,6 +11,40 @@ const UserDashBoard = () => {
   const sidebarRef = useRef(null);
 
   // Sample Data for holdings and mutual funds
+
+
+  const chartData = [
+    // 2023
+    { name: 'Jan 23', value: 290 },
+    { name: 'Feb 23', value: 305 },
+    { name: 'Mar 23', value: 295 }, // slight dip
+    { name: 'Apr 23', value: 315 },
+    { name: 'May 23', value: 330 },
+    { name: 'Jun 23', value: 345 },
+    { name: 'Jul 23', value: 335 }, // small drop
+    { name: 'Aug 23', value: 360 },
+    { name: 'Sep 23', value: 350 }, // fluctuation down
+    { name: 'Oct 23', value: 385 },
+    { name: 'Nov 23', value: 370 }, // dip before year-end rise
+    { name: 'Dec 23', value: 410 },
+    // 2024
+    { name: 'Jan 24', value: 425 },
+    { name: 'Feb 24', value: 415 }, // dip after year start
+    { name: 'Mar 24', value: 440 },
+    { name: 'Apr 24', value: 460 },
+    { name: 'May 24', value: 445 }, // fluctuation down
+    { name: 'Jun 24', value: 470 },
+    { name: 'Jul 24', value: 485 },
+    { name: 'Aug 24', value: 475 }, // slight drop
+    { name: 'Sep 24', value: 495 },
+    { name: 'Oct 24', value: 510 },
+    { name: 'Nov 24', value: 500 }, // dip before final rise
+    { name: 'Dec 24', value: 530 },
+];
+
+  
+
+
   const holdings = [
     {
       name: "Reliance Industries",
@@ -57,7 +93,20 @@ const UserDashBoard = () => {
               <p className="text-green-500">+3.75 (0.01%)</p>
             </div>
           </div>
-
+          <div className="p-4 bg-white shadow rounded-lg mb-6">
+          <div style={{ padding: '20px' }}>
+      <h1>M Data Visualization</h1>
+      <BrushBarChart 
+        data={chartData}
+        xKey="name"
+        yKey="value"
+        barColor="#82ca9d"
+      />
+    </div>
+    <div>
+    
+    </div>
+          </div>
           {/* Holdings Section */}
           <div className="p-4 bg-white shadow rounded-lg mb-6">
             <h2 className="text-lg font-semibold mb-4">Current Holdings</h2>
