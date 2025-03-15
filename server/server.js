@@ -5,7 +5,7 @@ const userRoutes = require('./routes/userRoutes');
 const priceRoutes = require('./routes/priceRoutes');
 
 const app = express();
-const FRONTEND_ORIGIN = 'http://localhost:3000'; // Update with your frontend URL
+const FRONTEND_ORIGIN = 'http://localhost:5173'; // Update with your frontend URL
 
 // Middlewares
 app.use(express.json());
