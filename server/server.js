@@ -1,22 +1,21 @@
 const express = require('express')
 const cookieParser = require('cookie-parser')
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
-
+const app = express()
 
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: false }));
+
 
 //routes
 const userRoutes = require('./routes/userRoutes');
+const priceRoutes = require("./routes/priceRoutes")
 
-const app = express()
+
 const port = 3000
-
+// app.use("/",userRoutes)
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+app.use("/api/price",priceRoutes)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
