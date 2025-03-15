@@ -32,29 +32,24 @@ function Navbar() {
   return (
     <div>
       <nav className="flex items-center justify-between p-4 bg-white shadow-md">
-        <div className="flex items-center gap-4">
-          <a
-            href="/dashboard"
-            className="flex items-center space-x-3 rtl:space-x-reverse"
-          >
-            <img src={logo} className="h-8" alt="Flowbite Logo" />
-          </a>
+        {/* <div className="flex items-center gap-4">
+          
           <a href="#" className="text-green-500">
             Explore
           </a>
           <a href="#" className="text-gray-700">
             Dashboard
           </a>
-        </div>
+        </div> */}
         <input
           type="text"
-          placeholder="Search Groww..."
-          className="border p-2 rounded-lg"
+          placeholder="Search Stocks..."
+          className="border p-2 rounded-lg w-[45%]"
         />
         <div className="flex items-center gap-4">
           <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full"
           onClick={() => navigate("/userdetails")}>
-            S
+            J
           </div>
         </div>
       </nav>
