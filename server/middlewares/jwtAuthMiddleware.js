@@ -21,8 +21,6 @@ const jwtAuthMiddleware = (req, res, next) => {
 };
 
 
-
-
 const tokenMiddleware = async (req, res, next) => {
   const token = req.cookies.jwttoken;
   // console.log('token is ', token);
