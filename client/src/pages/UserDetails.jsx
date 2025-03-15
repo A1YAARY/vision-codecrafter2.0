@@ -35,7 +35,7 @@ function UserDetails() {
     <div className="min-h-screen flex">
       <div
         ref={sidebarRef}
-        className={`fixed top-0 left-0 h-full bg-gray-100 text-white z-50 transform ${
+        className={`fixed top-0 left-0 h-full bg-white text-white z-50 transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out w-64 xl:static xl:translate-x-0`}
       >

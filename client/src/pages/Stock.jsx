@@ -523,106 +523,98 @@ const Stock = () => {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100">
-    {/* Sidebar */}
-    <div className="lg:w-64 w-full bg-gray-100 lg:static fixed top-0 left-0 h-full z-50 lg:translate-x-0 transition-transform">
-      <Sidebar />
-    </div>
+      {/* Sidebar */}
+      <div className="lg:w-64 w-full bg-gray-100 lg:static fixed top-0 left-0 h-full z-50 lg:translate-x-0 transition-transform">
+        <Sidebar />
+      </div>
 
-    <div className="flex-1">
-      <Navbar />
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+        <Navbar />
 
-      <div className="p-4 lg:p-6">
-        {/* Market Selection */}
-        <div className="flex flex-wrap gap-4 mb-6">
-          {["Indian", "US", "Japanese"].map((market) => (
-            <button
-              key={market}
-              className={`px-4 py-2 rounded ${
-                selectedMarket === market ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
-              }`}
-              onClick={() => setSelectedMarket(market)}
-            >
-              {market} Stocks
-            </button>
-          ))}
-        </div>
-
-        {/* Indices Section */}
-        <div className="flex justify-between">
-          <h2 className="text-lg font-semibold">Indices</h2>
-          <a href="#" className="text-green-500">
-            All indices
-          </a>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-          {indices.map((index, idx) => (
-            <div key={idx} className="p-4 bg-white shadow rounded-lg">
-              <p className="text-gray-500">{index.name}</p>
-              <p className="text-xl font-semibold">{index.value}</p>
-              <p
-                className={parseFloat(index.change) > 0 ? "text-green-500" : "text-red-500"}
-              >
-                {index.change} ({index.percentChange})
-              </p>
+        <div className="p-4 lg:p-6 flex flex-col xl:flex-row gap-6">
+          {/* Left Section - Stocks Data */}
+          <div className="xl:w-2/3 w-full">
+            {/* Market Selection */}
+            <div className="flex flex-wrap gap-4 mb-6">
+              {["Indian", "US", "Japanese"].map((market) => (
+                <button
+                  key={market}
+                  className={`px-4 py-2 rounded ${
+                    selectedMarket === market ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
+                  }`}
+                  onClick={() => setSelectedMarket(market)}
+                >
+                  {market} Stocks
+                </button>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* Stocks Table */}
-        <div className="mt-8">
-          <div className="flex justify-between items-center">
-            <h2 className="text-lg font-semibold">Most Traded Stocks</h2>
-            <a href="#" className="text-green-500">
-              View all
-            </a>
+            {/* Indices Section */}
+            <div className="flex justify-between">
+              <h2 className="text-lg font-semibold">Indices</h2>
+              <a href="#" className="text-green-500">All indices</a>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+              {indices.map((index, idx) => (
+                <div key={idx} className="p-4 bg-white shadow rounded-lg">
+                  <p className="text-gray-500">{index.name}</p>
+                  <p className="text-xl font-semibold">{index.value}</p>
+                  <p className={parseFloat(index.change) > 0 ? "text-green-500" : "text-red-500"}>
+                    {index.change} ({index.percentChange})
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Stocks Table */}
+            <div className="mt-8">
+              <div className="flex justify-between items-center">
+                <h2 className="text-lg font-semibold">Most Traded Stocks</h2>
+                <a href="#" className="text-green-500">View all</a>
+              </div>
+
+              <div className="mt-4 bg-white shadow rounded-lg overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-gray-50">
+                      <th className="text-left py-3 px-4 text-gray-500 font-normal text-sm">COMPANY</th>
+                      <th className="text-right py-3 px-4 text-gray-500 font-normal text-sm">MARKET PRICE</th>
+                      <th className="text-right py-3 px-4 text-gray-500 font-normal text-sm">CHANGE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {stocks.map((stock, index) => (
+                      <tr
+                        key={index}
+                        className="border-t border-gray-200 cursor-pointer hover:bg-gray-100"
+                        onClick={() => setSelectedStock(stock)}
+                      >
+                        <td className="py-3 px-4 font-medium">{stock.name}</td>
+                        <td className="py-3 px-4 text-right font-medium">₹{stock.price}</td>
+                        <td
+                          className={`py-3 px-4 text-right ${
+                            parseFloat(stock.change) > 0 ? "text-green-500" : "text-red-500"
+                          }`}
+                        >
+                          {stock.change} ({stock.percentChange})
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-4 bg-white shadow rounded-lg overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-gray-50">
-                  <th className="text-left py-3 px-4 text-gray-500 font-normal text-sm">
-                    COMPANY
-                  </th>
-                  <th className="text-right py-3 px-4 text-gray-500 font-normal text-sm">
-                    MARKET PRICE
-                  </th>
-                  <th className="text-right py-3 px-4 text-gray-500 font-normal text-sm">
-                    CHANGE
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {stocks.map((stock, index) => (
-                  <tr
-                    key={index}
-                    className="border-t border-gray-200 cursor-pointer hover:bg-gray-100"
-                    onClick={() => setSelectedStock(stock)}
-                  >
-                    <td className="py-3 px-4 font-medium">{stock.name}</td>
-                    <td className="py-3 px-4 text-right font-medium">₹{stock.price}</td>
-                    <td
-                      className={`py-3 px-4 text-right ${
-                        parseFloat(stock.change) > 0 ? "text-green-500" : "text-red-500"
-                      }`}
-                    >
-                      {stock.change} ({stock.percentChange})
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          {/* Right Section - Buy & Sell Component */}
+          <div className="xl:w-1/3 w-full">
+            <BuyAndSell selectedStock={selectedStock} />
           </div>
-        </div>
-
-        {/* Buy & Sell Component */}
-        <div className="mt-8">
-          <BuyAndSell selectedStock={selectedStock} />
         </div>
       </div>
     </div>
-  </div>
 );
 };
 

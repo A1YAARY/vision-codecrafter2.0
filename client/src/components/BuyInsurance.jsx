@@ -1,33 +1,27 @@
 import React from "react";
 
 const BuyInsurance = ({ selectedInsurance }) => {
-  if (!selectedInsurance) {
-    return (
-      <div className="bg-white shadow-lg rounded-lg p-6 w-96">
-        <h2 className="text-lg font-semibold">Select an Insurance Plan</h2>
-        <p className="text-gray-500 mt-2">Click on an insurance plan to purchase.</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 w-96">
-      <h2 className="text-lg font-semibold">{selectedInsurance.name}</h2>
-      <p className="text-gray-500">{selectedInsurance.benefits}</p>
-
-      <div className="mt-4">
-        <div className="text-sm text-gray-500">Premium</div>
-        <div className="font-medium">{selectedInsurance.premium}</div>
-      </div>
-
-      <div className="mt-2">
-        <div className="text-sm text-gray-500">Coverage</div>
-        <div className="font-medium">{selectedInsurance.coverage}</div>
-      </div>
-
-      <button className="mt-6 px-4 py-2 bg-green-500 text-white rounded-md w-full">
-        Proceed to Buy
-      </button>
+    <div className="bg-white shadow rounded-lg p-6">
+      <h2 className="text-lg font-semibold mb-4">Buy Insurance</h2>
+      {selectedInsurance ? (
+        <div>
+          <p className="text-gray-700">
+            <strong>Insurance:</strong> {selectedInsurance.name}
+          </p>
+          <p className="text-gray-700">
+            <strong>Coverage:</strong> {selectedInsurance.coverage}
+          </p>
+          <p className="text-gray-700">
+            <strong>Premium:</strong> {selectedInsurance.premium}
+          </p>
+          <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-md">
+            Purchase Insurance
+          </button>
+        </div>
+      ) : (
+        <p className="text-gray-500">Select an insurance plan to buy.</p>
+      )}
     </div>
   );
 };
