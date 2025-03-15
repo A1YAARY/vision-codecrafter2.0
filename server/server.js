@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: FRONTEND_ORIGIN,
+    origin: true,
     credentials: true, // Allow cookies to be sent
   })
 );
