@@ -57,11 +57,11 @@ function Login() {
       setTimeout(() => {
         setSuccess(null);
         if (role === 1) {
-          navigate("/admindashboard");
+          navigate("/dashboard");
         } else if (role === 2) {
-          navigate("/restaurantdashboard");
+          navigate("/dashboard");
         } else if (role === 3) {
-          navigate("/home");
+          navigate("/dashboard");
         }
       }, 1000);
     } catch (error) {
