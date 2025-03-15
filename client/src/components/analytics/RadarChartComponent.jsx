@@ -22,7 +22,7 @@ const RadarChartComponent = ({ data }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-xl font-medium text-[#1349C5] self-start">{data.title}</h2>
+      <h2 className="text-xl font-medium text-[#10002B] self-start">{data.title}</h2>
       <ResponsiveContainer  width={500} height={350}>
         <RadarChart cx="50%" cy="50%" outerRadius="85%" data={processedData}>
           <PolarGrid />
@@ -56,9 +56,9 @@ const RadarChartComponent = ({ data }) => {
           />
           <PolarRadiusAxis />
           <Tooltip />
-          <Radar dataKey="yourinvestment" stroke="#1349C5" fill="#1349C5" fillOpacity={0.6} />
+          <Radar dataKey="yourinvestment" stroke="#3C096C" fill="#C77DFF" fillOpacity={0.6} />
           
-          <Radar dataKey="max" stroke="#D3D3D3" fill="#D3D3D3" fillOpacity={0.3} />
+          <Radar dataKey="max" stroke="#E0AAFF" fill="#5A189A" fillOpacity={0.3} />
         </RadarChart>
       </ResponsiveContainer>
     </div>

@@ -10,9 +10,7 @@ function Navbar() {
   const userDropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  // Get userName and email from Redux
-  //   const userName = useSelector((state) => state.user.name);
-  //   const email = useSelector((state) => state.user.email);
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -31,16 +29,8 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="flex items-center justify-between p-4 bg-white shadow-md">
-        {/* <div className="flex items-center gap-4">
-          
-          <a href="#" className="text-green-500">
-            Explore
-          </a>
-          <a href="#" className="text-gray-700">
-            Dashboard
-          </a>
-        </div> */}
+      <nav className="h-7/12 flex items-center justify-between p-4 bg-white shadow-md">
+       
         <input
           type="text"
           placeholder="Search Stocks..."
