@@ -11,7 +11,7 @@ const priceRoutes = require("./routes/priceRoutes")
 
 
 const port = 3000
-// app.use("/",userRoutes)
+app.use("/api/users",userRoutes)
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
