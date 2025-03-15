@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import UserIcon from "../components/UserIcon";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
 
 
 function UserDetails() {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.svg";
 
@@ -72,9 +72,7 @@ const Explore = () => {
             </svg>
           </button>
 
-       
           <div className="p-6 ">
-        
             <div className="flex justify-between">
               <h2 className="text-lg font-semibold">Indices</h2>
               <a href="#" className="text-green-500">
@@ -99,7 +97,6 @@ const Explore = () => {
               </div>
             </div>
 
-         
             <h2 className="mt-6 text-lg font-semibold">Most traded Stocks</h2>
             <div className="grid grid-cols-4 gap-4 mt-4">
               <div className="p-4 bg-white shadow rounded-lg">

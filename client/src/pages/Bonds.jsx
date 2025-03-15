@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
 
 const Bonds = () => {
   const navigate = useNavigate();
@@ -76,7 +76,7 @@ const Bonds = () => {
 
     return bonds.map((bond) => {
       const yield_ = (Math.random() * 2 + 7).toFixed(2);
-      const change = (Math.random() * 0.20).toFixed(3);
+      const change = (Math.random() * 0.2).toFixed(3);
       const percentChange = (Math.random() * 2.5).toFixed(2);
 
       return {
@@ -99,7 +99,7 @@ const Bonds = () => {
 
     return bonds.map((bond) => {
       const yield_ = (Math.random() * 2 + 4).toFixed(2);
-      const change = (Math.random() * 0.30).toFixed(3);
+      const change = (Math.random() * 0.3).toFixed(3);
       const percentChange = (Math.random() * 4).toFixed(2);
 
       return {
@@ -167,8 +167,10 @@ const Bonds = () => {
 
   // Data to display based on selected market
   const bonds = bondMarket === "indian" ? indianBonds : usBonds;
-  const topPerformers = bondMarket === "indian" ? indianTopPerformers : usTopPerformers;
-  const underperformers = bondMarket === "indian" ? indianUnderperformers : usUnderperformers;
+  const topPerformers =
+    bondMarket === "indian" ? indianTopPerformers : usTopPerformers;
+  const underperformers =
+    bondMarket === "indian" ? indianUnderperformers : usUnderperformers;
 
   const handleNavigation = (path) => {
     navigate(path);
@@ -271,7 +273,9 @@ const Bonds = () => {
             {/* Benchmark Yields Section */}
             <div className="flex justify-between">
               <h2 className="text-lg font-semibold">
-                {bondMarket === "indian" ? "Indian Benchmark Yields" : "US Benchmark Yields"}
+                {bondMarket === "indian"
+                  ? "Indian Benchmark Yields"
+                  : "US Benchmark Yields"}
               </h2>
               <a href="#" className="text-green-500">
                 All benchmarks

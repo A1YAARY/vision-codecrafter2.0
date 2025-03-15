@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
 
 const UserDashBoard = () => {
   const navigate = useNavigate();
@@ -10,7 +10,12 @@ const UserDashBoard = () => {
 
   // Sample Data for holdings and mutual funds
   const holdings = [
-    { name: "Reliance Industries", invested: 10000, current: 9500, returns: -500 },
+    {
+      name: "Reliance Industries",
+      invested: 10000,
+      current: 9500,
+      returns: -500,
+    },
     { name: "TCS", invested: 5000, current: 5500, returns: 500 },
   ];
 
@@ -61,7 +66,11 @@ const UserDashBoard = () => {
                 <p>{holding.name}</p>
                 <p>Invested: ₹{holding.invested}</p>
                 <p>Current: ₹{holding.current}</p>
-                <p className={holding.returns >= 0 ? "text-green-500" : "text-red-500"}>
+                <p
+                  className={
+                    holding.returns >= 0 ? "text-green-500" : "text-red-500"
+                  }
+                >
                   {holding.returns >= 0 ? "+" : ""}₹{holding.returns}
                 </p>
               </div>
@@ -76,7 +85,11 @@ const UserDashBoard = () => {
                 <p>{fund.name}</p>
                 <p>Invested: ₹{fund.invested}</p>
                 <p>Current: ₹{fund.current}</p>
-                <p className={fund.returns >= 0 ? "text-green-500" : "text-red-500"}>
+                <p
+                  className={
+                    fund.returns >= 0 ? "text-green-500" : "text-red-500"
+                  }
+                >
                   {fund.returns >= 0 ? "+" : ""}₹{fund.returns}
                 </p>
               </div>
