@@ -24,12 +24,12 @@ const getUserById = async (id) => {
 };
 
 // Function to create a new user
-const createUser = async (name, balance, email, password_hash, dmat_acc_no, pan, gender, phone) => {
+const createUser = async (name, balance, email, password_hash, dmat_acc_no, pan, gender, phone, role) => {
     try {
-        const sql = `INSERT INTO users (name, balance, email, password_hash, dmat_acc_no, pan, gender, phone)
-                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
-                     RETURNING id, name, balance, email, dmat_acc_no, pan, gender, phone;`;
-        const newUser = await query(sql, [name, balance, email, password_hash, dmat_acc_no, pan, gender, phone]);
+        const sql = `INSERT INTO users (name, balance, email, password_hash, dmat_acc_no, pan, gender, phone, role)
+                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) 
+                     RETURNING id, name, balance, email, dmat_acc_no, pan, gender, phone, role;`;
+        const newUser = await query(sql, [name, balance, email, password_hash, dmat_acc_no, pan, gender, phone, role]);
         return newUser.rows[0];
     } catch (err) {
         console.error(err);

@@ -8,9 +8,9 @@ const userModel = require('../models/userModel');
 
 // Function to create a new user/register
 const registerUser = async (req, res) => {
-    const { name, balance, email, dmat_acc_no, pan, gender, phone, password } = req.body;
+    const { name, balance, email, dmat_acc_no, pan, gender, phone, password, role } = req.body;
 
-    if (!name || !balance || !email || !dmat_acc_no || !pan || !gender || !phone) {
+    if (!name || !balance || !email || !dmat_acc_no || !pan || !gender || !phone || !role) {
         return res.status(400).json({ error: 'All fields are required' });
     }
 
@@ -24,7 +24,7 @@ const registerUser = async (req, res) => {
         // const password = generateRandomPassword(8, true);
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = await userModel.createUser(name, balance, email, hashedPassword, dmat_acc_no, pan, gender, phone);
+        const newUser = await userModel.createUser(name, balance, email, hashedPassword, dmat_acc_no, pan, gender, phone, role);
 
         if (newUser) {
             return res.status(201).json({ message: 'User registered successfully', user: newUser });
@@ -98,7 +98,7 @@ const updateUser = async (req, res) => {
         return res.status(400).json({ error: 'User ID is required' });
     }
 
-    const { name, balance, email, password, dmat_acc_no, pan, gender, phone } = req.body;
+    const { name, balance, email, password, dmat_acc_no, pan, gender, phone, role} = req.body;
 
     try {
         const updatedFields = {};
@@ -109,6 +109,7 @@ const updateUser = async (req, res) => {
         if (pan) updatedFields.pan = pan;
         if (gender) updatedFields.gender = gender;
         if (phone) updatedFields.phone = phone;
+        if (role) updatedFields.role = role;
 
         // Hash new password if provided
         if (password) {
