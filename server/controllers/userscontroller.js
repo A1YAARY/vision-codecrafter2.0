@@ -143,10 +143,28 @@ const deleteUser = async (req, res) => {
     }
 };
 
+//update balance
+
+const updateBalance = async (req, res) => {
+
+    const { balance, id } = req.body;
+    console.log(balance, id);
+
+    try { 
+        const updatedUser = await userModel.updateUserBalance(id, balance);
+        return res.status(200).json(updatedUser);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+
 module.exports = {
     registerUser,
     loginUser,
     updateUser,
     deleteUser,
     logout,
+    updateBalance
 };

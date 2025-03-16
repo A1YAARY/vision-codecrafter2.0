@@ -114,6 +114,18 @@ const getUserByEmail = async (email) => {
     }
 };
 
+// updateUserBalance
+const updateUserBalance = async (id, balance) => {
+    try {
+        const sql = 'UPDATE users SET balance = $1 WHERE id = $2 RETURNING *;';
+        const result = await query(sql, [balance, id]);
+        return result.rows[0];
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+};
+
 module.exports = {
     findUserByEmail,
     createUser,
@@ -124,4 +136,5 @@ module.exports = {
     getUserById,
     getUsers,
     getUserByEmail,
+    updateUserBalance
 };
