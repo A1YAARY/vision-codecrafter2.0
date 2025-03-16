@@ -1,9 +1,13 @@
 import React from 'react'
+import vi from "../assets/vi.svg";
 
 function LandingNavbar() {
   return (
-    <nav class=" top-0 border-solid border-[#10002B] w-full border-b py-3 bg-[#10002B] z-50 ">
-<div class="container mx-auto ">
+    <nav class=" border-solid  w-full  bg-[#10002B]  z-50 flex  ">
+        <div className="ml-2 ">
+        <img src={vi} alt="vi" className="h-20 w-40 " />
+      </div>
+<div class="container mx-auto mt-2 ">
   <div class="w-full flex  flex-col lg:flex-row">
       <div class=" flex justify-between  lg:flex-row">
          

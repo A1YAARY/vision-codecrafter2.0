@@ -10,7 +10,7 @@ import {
   ResponsiveContainer
 } from 'recharts';
 
-const BrushBarChart = ({ data, xKey = 'name', yKey = 'value', barColor = '#8884d8' }) => {
+const BrushBarChart = ({ data, xKey = 'name', yKey = 'value', barColor = '#240046' }) => {
   return (
     <div style={{ width: '100%', height: 400 }}>
       <ResponsiveContainer>
@@ -31,7 +31,7 @@ const BrushBarChart = ({ data, xKey = 'name', yKey = 'value', barColor = '#8884d
           <Brush 
             dataKey={xKey}
             height={30}
-            stroke="#8884d8"
+            stroke="#E2ADFF"
           />
         </BarChart>
       </ResponsiveContainer>

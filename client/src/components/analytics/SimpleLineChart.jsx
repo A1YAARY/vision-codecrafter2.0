@@ -27,18 +27,21 @@ const SimpleLineChart = ({ data }) => {
           dataKey="line1" 
           stroke="#5A189A" 
           strokeWidth={2} 
+          animationDuration={2000} // Slow animation
         />
         <Line 
           type="monotone" 
           dataKey="line2" 
           stroke="#5A189A" 
           strokeWidth={2} 
+          animationDuration={2000} // Slow animation
         />
         <Line 
           type="monotone" 
           dataKey="line3" 
           stroke="#5A189A" 
           strokeWidth={2} 
+          animationDuration={2000} // Slow animation
         />
       </LineChart>
     </ResponsiveContainer>
