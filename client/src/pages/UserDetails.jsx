@@ -6,11 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Sidebar from "../components/Sidebar";
 import jsPDF from "jspdf";
+import axios from "axios";
 
 function UserDetails() {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.user.user);
-  console.log(userData);
+  // console.log(userData);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
 
@@ -28,16 +29,39 @@ function UserDetails() {
     };
   }, []);
 
-  // Function to generate PDF report
-  const generatePDF = () => {
-    const doc = new jsPDF();
-    doc.text("User Portfolio Report", 20, 20);
-    doc.text(`Name: ${userData?.name || "N/A"}`, 20, 40);
-    doc.text(`Email: ${userData?.email || "N/A"}`, 20, 50);
-    doc.text(`Investments: ${userData?.investments || "No investments recorded"}`, 20, 60);
-    doc.text(`Portfolio Performance: ${userData?.performance || "No data available"}`, 20, 70);
-    doc.save("User_Report.pdf");
-  };
+ 
+
+const generatePDF = async () => {
+  try {
+    const API_BASE_URL = import.meta.env.VITE_APP_REACT_BASE_URL; // Fix env variable
+    const response = await axios.get(
+      `${API_BASE_URL}/api/investments/generate-pdf?user_id=${userData.id}`,
+      {
+        responseType: "blob", // Ensure we get binary data
+      }
+    );
+
+    // Create a Blob from the PDF response
+    const blob = new Blob([response.data], { type: "application/pdf" });
+    const url = window.URL.createObjectURL(blob);
+
+    // Create a temporary link and trigger the download
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "investment_report.pdf"; // Name of the downloaded file
+    document.body.appendChild(a);
+    a.click();
+
+    // Cleanup
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error("Error generating PDF:", error);
+  }
+};
+
+
+
 
   return (
     <div className="min-h-screen flex bg-[#10002b]">
