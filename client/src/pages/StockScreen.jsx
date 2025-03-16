@@ -32,6 +32,7 @@ const StockScreen = () => {
     // Mock function to get stock data - replace with actual API call
     const getStockBySymbol = (symbol) => {
       const stocks = {
+        // Indian Stocks (NSE)
         "NSE:TATAMOTORS": {
           name: "Tata Motors",
           symbol: "NSE:TATAMOTORS",
@@ -53,7 +54,201 @@ const StockScreen = () => {
           change: "+5.2",
           percentChange: "0.35%",
         },
+        "NSE:HDFCBANK": {
+          name: "HDFC Bank",
+          symbol: "NSE:HDFCBANK",
+          price: 1650,
+          change: "+15.3",
+          percentChange: "0.94%",
+        },
+        "NSE:TCS": {
+          name: "Tata Consultancy Services",
+          symbol: "NSE:TCS",
+          price: 3450,
+          change: "-18.6",
+          percentChange: "-0.54%",
+        },
+        "NSE:ICICIBANK": {
+          name: "ICICI Bank",
+          symbol: "NSE:ICICIBANK",
+          price: 950,
+          change: "+7.8",
+          percentChange: "0.83%",
+        },
+        "NSE:BHARTIARTL": {
+          name: "Bharti Airtel",
+          symbol: "NSE:BHARTIARTL",
+          price: 875,
+          change: "+12.4",
+          percentChange: "1.44%",
+        },
+        "NSE:HINDUNILVR": {
+          name: "Hindustan Unilever",
+          symbol: "NSE:HINDUNILVR",
+          price: 2350,
+          change: "-5.6",
+          percentChange: "-0.24%",
+        },
+        "NSE:WIPRO": {
+          name: "Wipro",
+          symbol: "NSE:WIPRO",
+          price: 420,
+          change: "+3.2",
+          percentChange: "0.77%",
+        },
+        "NSE:ASIANPAINT": {
+          name: "Asian Paints",
+          symbol: "NSE:ASIANPAINT",
+          price: 3100,
+          change: "-8.7",
+          percentChange: "-0.28%",
+        },
+        
+        // US Stocks (NASDAQ/NYSE)
+        "NASDAQ:AAPL": {
+          name: "Apple Inc",
+          symbol: "NASDAQ:AAPL",
+          price: 173.50,
+          change: "+2.35",
+          percentChange: "1.37%",
+        },
+        "NASDAQ:MSFT": {
+          name: "Microsoft Corporation",
+          symbol: "NASDAQ:MSFT",
+          price: 396.20,
+          change: "-3.80",
+          percentChange: "-0.95%",
+        },
+        "NASDAQ:AMZN": {
+          name: "Amazon.com Inc",
+          symbol: "NASDAQ:AMZN",
+          price: 178.75,
+          change: "+4.25",
+          percentChange: "2.43%",
+        },
+        "NASDAQ:GOOGL": {
+          name: "Alphabet Inc",
+          symbol: "NASDAQ:GOOGL",
+          price: 142.30,
+          change: "+1.70",
+          percentChange: "1.21%",
+        },
+        "NYSE:JNJ": {
+          name: "Johnson & Johnson",
+          symbol: "NYSE:JNJ",
+          price: 162.80,
+          change: "-0.90",
+          percentChange: "-0.55%",
+        },
+        "NYSE:PG": {
+          name: "Procter & Gamble",
+          symbol: "NYSE:PG",
+          price: 158.25,
+          change: "+0.75",
+          percentChange: "0.48%",
+        },
+        "NYSE:JPM": {
+          name: "JPMorgan Chase",
+          symbol: "NYSE:JPM",
+          price: 180.50,
+          change: "+3.25",
+          percentChange: "1.83%",
+        },
+        "NYSE:V": {
+          name: "Visa Inc",
+          symbol: "NYSE:V",
+          price: 267.40,
+          change: "-1.35",
+          percentChange: "-0.50%",
+        },
+        "NASDAQ:TSLA": {
+          name: "Tesla Inc",
+          symbol: "NASDAQ:TSLA",
+          price: 245.75,
+          change: "+8.50",
+          percentChange: "3.58%",
+        },
+        "NYSE:WMT": {
+          name: "Walmart Inc",
+          symbol: "NYSE:WMT",
+          price: 59.80,
+          change: "+0.45",
+          percentChange: "0.76%",
+        },
+        
+        // Japanese Stocks (TYO)
+        "TYO:7203": {
+          name: "Toyota Motor Corp",
+          symbol: "TYO:7203",
+          price: 2450,
+          change: "+35.0",
+          percentChange: "1.45%",
+        },
+        "TYO:9984": {
+          name: "SoftBank Group",
+          symbol: "TYO:9984",
+          price: 6780,
+          change: "-120.0",
+          percentChange: "-1.74%",
+        },
+        "TYO:6758": {
+          name: "Sony Group",
+          symbol: "TYO:6758",
+          price: 12450,
+          change: "+225.0",
+          percentChange: "1.84%",
+        },
+        "TYO:7974": {
+          name: "Nintendo Co",
+          symbol: "TYO:7974",
+          price: 7350,
+          change: "+80.0",
+          percentChange: "1.10%",
+        },
+        "TYO:9432": {
+          name: "Nippon Telegraph & Telephone",
+          symbol: "TYO:9432",
+          price: 3860,
+          change: "-45.0",
+          percentChange: "-1.15%",
+        },
+        "TYO:6954": {
+          name: "Fanuc Corp",
+          symbol: "TYO:6954",
+          price: 4520,
+          change: "+65.0",
+          percentChange: "1.46%",
+        },
+        "TYO:6861": {
+          name: "Keyence Corp",
+          symbol: "TYO:6861",
+          price: 65200,
+          change: "-780.0",
+          percentChange: "-1.18%",
+        },
+        "TYO:8306": {
+          name: "Mitsubishi UFJ Financial Group",
+          symbol: "TYO:8306",
+          price: 1230,
+          change: "+18.0",
+          percentChange: "1.48%",
+        },
+        "TYO:6501": {
+          name: "Hitachi Ltd",
+          symbol: "TYO:6501",
+          price: 9450,
+          change: "+125.0",
+          percentChange: "1.34%",
+        },
+        "TYO:6902": {
+          name: "Denso Corp",
+          symbol: "TYO:6902",
+          price: 1820,
+          change: "-25.0",
+          percentChange: "-1.36%",
+        }
       };
+      
       return (
         stocks[symbol] || {
           name: symbol,
@@ -64,7 +259,7 @@ const StockScreen = () => {
         }
       );
     };
-
+  
     const decodedSymbol = decodeURIComponent(stockSymbol);
     const stock = getStockBySymbol(decodedSymbol);
     setSelectedStock(stock);

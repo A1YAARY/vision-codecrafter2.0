@@ -126,6 +126,41 @@ const Stock = () => {
           change: "-22.40",
           percentChange: "-0.65%",
         },
+        {
+          name: "ICICI Bank",
+          symbol: "NSE:ICICIBANK",
+          price: 950.75,
+          change: "+7.80",
+          percentChange: "0.83%",
+        },
+        {
+          name: "Bharti Airtel",
+          symbol: "NSE:BHARTIARTL",
+          price: 875.30,
+          change: "+12.45",
+          percentChange: "1.44%",
+        },
+        {
+          name: "Hindustan Unilever",
+          symbol: "NSE:HINDUNILVR",
+          price: 2350.20,
+          change: "-5.65",
+          percentChange: "-0.24%",
+        },
+        {
+          name: "Wipro",
+          symbol: "NSE:WIPRO",
+          price: 420.15,
+          change: "+3.25",
+          percentChange: "0.78%",
+        },
+        {
+          name: "Asian Paints",
+          symbol: "NSE:ASIANPAINT",
+          price: 3100.50,
+          change: "-8.75",
+          percentChange: "-0.28%",
+        }
       ],
       US: [
         {
@@ -149,6 +184,55 @@ const Stock = () => {
           change: "-5.75",
           percentChange: "-2.43%",
         },
+        {
+          name: "Amazon",
+          symbol: "NASDAQ:AMZN",
+          price: 178.75,
+          change: "+4.25",
+          percentChange: "2.43%",
+        },
+        {
+          name: "Alphabet (Google)",
+          symbol: "NASDAQ:GOOGL",
+          price: 142.30,
+          change: "+1.70",
+          percentChange: "1.21%",
+        },
+        {
+          name: "Johnson & Johnson",
+          symbol: "NYSE:JNJ",
+          price: 162.80,
+          change: "-0.90",
+          percentChange: "-0.55%",
+        },
+        {
+          name: "Procter & Gamble",
+          symbol: "NYSE:PG",
+          price: 158.25,
+          change: "+0.75",
+          percentChange: "0.48%",
+        },
+        {
+          name: "JPMorgan Chase",
+          symbol: "NYSE:JPM",
+          price: 180.50,
+          change: "+3.25",
+          percentChange: "1.83%",
+        },
+        {
+          name: "Visa Inc",
+          symbol: "NYSE:V",
+          price: 267.40,
+          change: "-1.35",
+          percentChange: "-0.50%",
+        },
+        {
+          name: "Walmart",
+          symbol: "NYSE:WMT",
+          price: 59.80,
+          change: "+0.45",
+          percentChange: "0.76%",
+        }
       ],
       Japanese: [
         {
@@ -172,6 +256,55 @@ const Stock = () => {
           change: "+225.60",
           percentChange: "1.85%",
         },
+        {
+          name: "Nintendo",
+          symbol: "TSE:7974",
+          price: 7350.50,
+          change: "+80.25",
+          percentChange: "1.10%",
+        },
+        {
+          name: "Nippon Telegraph & Telephone",
+          symbol: "TSE:9432",
+          price: 3860.75,
+          change: "-45.25",
+          percentChange: "-1.16%",
+        },
+        {
+          name: "Fanuc Corp",
+          symbol: "TSE:6954",
+          price: 4520.25,
+          change: "+65.50",
+          percentChange: "1.47%",
+        },
+        {
+          name: "Keyence Corp",
+          symbol: "TSE:6861",
+          price: 65200.50,
+          change: "-780.25",
+          percentChange: "-1.18%",
+        },
+        {
+          name: "Mitsubishi UFJ Financial",
+          symbol: "TSE:8306",
+          price: 1230.75,
+          change: "+18.50",
+          percentChange: "1.53%",
+        },
+        {
+          name: "Hitachi",
+          symbol: "TSE:6501",
+          price: 9450.25,
+          change: "+125.75",
+          percentChange: "1.35%",
+        },
+        {
+          name: "Denso Corp",
+          symbol: "TSE:6902",
+          price: 1820.50,
+          change: "-25.25",
+          percentChange: "-1.37%",
+        }
       ],
     };
     
