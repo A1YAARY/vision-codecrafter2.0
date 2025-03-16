@@ -68,7 +68,7 @@ withCredentials :true
 
 
   return (
-    <div className="relative flex items-center justify-center h-screen bg-cover bg-center overflow-hidden ">
+    <div className="relative flex items-center justify-center bg-[#3C096C] h-screen bg-cover bg-center overflow-hidden ">
       {/* {success && (
         <div className="fixed top-0 left-0 right-0 bg-green-600 text-white text-center text-2xl py-4 z-50 animate-pulse">
           {success}
@@ -80,11 +80,13 @@ withCredentials :true
         </div>
       )} */}
 
-      <div className="flex flex-wrap w-4/12  max-w-5xl bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="flex flex-wrap w-4/12  max-w-5xl bg-[#EDD6FF] rounded-lg shadow-lg overflow-hidden">
         <div className="w-full p-8 flex flex-col justify-center overflow-hidden">
-          <h2 className="text-3xl font-bold text-orange-500 mb-6">
+          <div className="ml-10">
+          <h2 className="text-3xl font-bold text-[#7B2CBF] mb-6 ">
             Welcome to VisionInvest
           </h2>
+          </div>
           <form 
           
           className="space-y-6" onSubmit={handleSubmit}>
@@ -101,7 +103,7 @@ withCredentials :true
                 // id="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-[#EDD6FF] focus:border-[#EDD6FF] text-sm"
                 placeholder="Enter Email"
                 required
               />
@@ -119,7 +121,7 @@ withCredentials :true
                 id="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 text-sm"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-[#EDD6FF] focus:border-[#EDD6FF] text-sm"
                 placeholder="Enter A Strong Password"
                 required
               />
@@ -127,7 +129,7 @@ withCredentials :true
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-orange-500 text-white font-medium rounded-lg text-sm px-5 py-3 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 flex items-center justify-center"
+              className="w-full bg-[#5A189A] text-white font-medium rounded-lg text-sm px-5 py-3 hover:bg-[#240046] focus:ring-4 focus:ring-[#EDD6FF] flex items-center justify-center"
             >
               {isLoading ? (
                 <svg
@@ -159,7 +161,7 @@ withCredentials :true
             Don't have an account?{" "}
             <a
               onClick={() => navigate("/signup")}
-              className="text-orange-500 hover:underline font-medium cursor-pointer"
+              className="text-[#5A189A] hover:underline font-medium cursor-pointer"
             >
               Register
             </a>

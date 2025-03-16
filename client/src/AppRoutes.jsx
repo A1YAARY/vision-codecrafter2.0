@@ -28,7 +28,7 @@ const AppRoutes = () => {
       <Route path="/explore" element={<Explore/>} />
       <Route path="/" element={<LandingPage />} />
       <Route path="/insurance" element={<Insurance />} />
-      <Route path="/stock-screen" element={<StockScreen />} />
+      <Route path="/stock/:stockSymbol" element={<StockScreen />} />
      
 
      {/* admin Routes */}
