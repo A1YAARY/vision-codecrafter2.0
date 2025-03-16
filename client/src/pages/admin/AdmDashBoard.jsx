@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/Navbar";
+import AdminNavbar from "../../components/AdminNavbar";
 import AdmSidebar from "../../components/AdmSidebar";
 import jsPDF from "jspdf";
 
@@ -50,7 +50,7 @@ const AdmDashBoard = () => {
       {/* Main Content */}
       <div className="flex-1">
         {/* Navbar */}
-        <Navbar />
+        <AdminNavbar />
 
         {/* Sidebar Toggle Button */}
         <button

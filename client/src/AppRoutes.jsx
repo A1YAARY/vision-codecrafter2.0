@@ -13,6 +13,7 @@ import Insurance from "./pages/Insurance";
 import StockScreen from "./pages/StockScreen";
 import AdmDashBoard from "./pages/admin/AdmDashBoard";
 import UserList from "./pages/admin/UserList";
+import AdminDetails from "./pages/admin/AdminDetails";
 
 const AppRoutes = () => {
   return (
@@ -34,6 +35,7 @@ const AppRoutes = () => {
      {/* admin Routes */}
      <Route path="/admin/dashboard" element={<AdmDashBoard/>} />
      <Route path="/admin/user" element={<UserList/>} />
+     <Route path="/admin/details" element={<AdminDetails/>} />
 
     </Routes>
   );
