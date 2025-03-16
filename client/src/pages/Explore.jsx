@@ -34,7 +34,7 @@ const Explore = () => {
     };
   }, []);
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-[#10002b]">
       <div
         ref={sidebarRef}
         className={`fixed top-0 left-0 h-full bg-gray-100 text-white z-50 transform ${

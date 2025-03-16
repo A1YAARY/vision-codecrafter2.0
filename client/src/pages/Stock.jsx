@@ -522,9 +522,9 @@ const Stock = () => {
   }, [selectedMarket]);
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100 ">
       {/* Sidebar */}
-      <div className="lg:w-64 w-full bg-gray-100 lg:static fixed top-0 left-0 h-full z-50 lg:translate-x-0 transition-transform">
+      <div className="lg:w-64 w-full bg-[#10002b] lg:static fixed top-0 left-0 h-full z-50 lg:translate-x-0 transition-transform">
         <Sidebar />
       </div>
 

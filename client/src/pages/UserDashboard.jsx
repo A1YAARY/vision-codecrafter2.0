@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import BrushBarChart from "../components/analytics/BrushBarChart";
-
+import ComparisonChart from "../components/analytics/ComparisonChart";
+import RadarChartComponent from "../components/analytics/RadarChartComponent";
 
 const UserDashBoard = () => {
   const navigate = useNavigate();
@@ -41,6 +42,92 @@ const UserDashBoard = () => {
     { name: 'Nov 24', value: 500 }, // dip before final rise
     { name: 'Dec 24', value: 530 },
 ];
+const allStocks = [
+  { id: 'AAPL', name: 'Apple Inc.' },
+  { id: 'MSFT', name: 'Microsoft Corp.' },
+  { id: 'AMZN', name: 'Amazon.com Inc.' },
+  { id: 'GOOGL', name: 'Alphabet Inc.' },
+  { id: 'META', name: 'Meta Platforms Inc.' },
+  { id: 'TSLA', name: 'Tesla Inc.' },
+  { id: 'NVDA', name: 'NVIDIA Corp.' },
+  { id: 'NFLX', name: 'Netflix Inc.' },
+  { id: 'DIS', name: 'Walt Disney Co.' },
+  { id: 'PYPL', name: 'PayPal Holdings Inc.' }
+];
+
+// Stock performance data
+const stockData = {
+  'AAPL': [
+    { month: 'Jan', price: 172.35 },
+    { month: 'Feb', price: 165.12 },
+    { month: 'Mar', price: 169.85 },
+    { month: 'Apr', price: 174.63 },
+    { month: 'May', price: 180.95 }
+  ],
+  'MSFT': [
+    { month: 'Jan', price: 342.45 },
+    { month: 'Feb', price: 350.19 },
+    { month: 'Mar', price: 357.36 },
+    { month: 'Apr', price: 365.93 },
+    { month: 'May', price: 371.88 }
+  ],
+  'AMZN': [
+    { month: 'Jan', price: 144.58 },
+    { month: 'Feb', price: 149.36 },
+    { month: 'Mar', price: 154.80 },
+    { month: 'Apr', price: 151.55 },
+    { month: 'May', price: 157.20 }
+  ],
+  'GOOGL': [
+    { month: 'Jan', price: 142.98 },
+    { month: 'Feb', price: 147.70 },
+    { month: 'Mar', price: 152.48 },
+    { month: 'Apr', price: 158.14 },
+    { month: 'May', price: 162.30 }
+  ],
+  'META': [
+    { month: 'Jan', price: 329.75 },
+    { month: 'Feb', price: 342.65 },
+    { month: 'Mar', price: 356.82 },
+    { month: 'Apr', price: 368.35 },
+    { month: 'May', price: 375.48 }
+  ],
+  'TSLA': [
+    { month: 'Jan', price: 219.58 },
+    { month: 'Feb', price: 208.73 },
+    { month: 'Mar', price: 214.95 },
+    { month: 'Apr', price: 221.65 },
+    { month: 'May', price: 226.80 }
+  ],
+  'NVDA': [
+    { month: 'Jan', price: 548.22 },
+    { month: 'Feb', price: 570.88 },
+    { month: 'Mar', price: 586.32 },
+    { month: 'Apr', price: 612.45 },
+    { month: 'May', price: 625.70 }
+  ],
+  'NFLX': [
+    { month: 'Jan', price: 485.89 },
+    { month: 'Feb', price: 492.15 },
+    { month: 'Mar', price: 505.40 },
+    { month: 'Apr', price: 517.75 },
+    { month: 'May', price: 525.10 }
+  ],
+  'DIS': [
+    { month: 'Jan', price: 94.89 },
+    { month: 'Feb', price: 98.36 },
+    { month: 'Mar', price: 102.75 },
+    { month: 'Apr', price: 106.20 },
+    { month: 'May', price: 109.45 }
+  ],
+  'PYPL': [
+    { month: 'Jan', price: 64.32 },
+    { month: 'Feb', price: 67.15 },
+    { month: 'Mar', price: 69.80 },
+    { month: 'Apr', price: 71.95 },
+    { month: 'May', price: 73.60 }
+  ]
+};
 
   
 
@@ -59,9 +146,44 @@ const UserDashBoard = () => {
     { name: "SBI Bluechip Fund", invested: 7000, current: 7500, returns: 500 },
     { name: "HDFC Small Cap", invested: 8000, current: 7800, returns: -200 },
   ];
+  const radarData = {
+    title: "Investment Diversification Analysis",
+    chartData: [
+      {
+        name: "Stocks",
+        yourScore: 75,
+        averagePercentage: 60,
+        maxMarks: 100
+      },
+      {
+        name: "Mutual Funds",
+        yourScore: 50,
+        averagePercentage: 45,
+        maxMarks: 100
+      },
+      {
+        name: "Insurance",
+        yourScore: 20,
+        averagePercentage: 25,
+        maxMarks: 100
+      },
+      {
+        name: "Bonds",
+        yourScore: 60,
+        averagePercentage: 50,
+        maxMarks: 100
+      },
+      {
+        name: "Foreign Stocks",
+        yourScore: 30,
+        averagePercentage: 35,
+        maxMarks: 100
+      }
+    ]
+  };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen bg-[#10002b] flex">
       <div
         ref={sidebarRef}
         className={`fixed top-0 left-0 h-full bg-gray-100 text-white z-50 transform ${
@@ -103,10 +225,17 @@ const UserDashBoard = () => {
         barColor="#82ca9d"
       />
     </div>
-    <div>
-    
     </div>
-          </div>
+    <div className="p-4 bg-white shadow rounded-lg mb-6">
+    <ComparisonChart 
+    allStocks={allStocks} 
+    stockData={stockData}/>
+    </div>
+    
+    <div className="p-4 bg-white shadow rounded-lg mb-6">
+    <RadarChartComponent data={radarData} />
+    </div>
+          
           {/* Holdings Section */}
           <div className="p-4 bg-white shadow rounded-lg mb-6">
             <h2 className="text-lg font-semibold mb-4">Current Holdings</h2>

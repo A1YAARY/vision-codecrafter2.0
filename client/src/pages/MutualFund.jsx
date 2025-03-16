@@ -75,7 +75,7 @@ const MutualFund = () => {
   }, [selectedMarket]);
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-[#10002b]">
       {/* Sidebar */}
       <div
         ref={sidebarRef}

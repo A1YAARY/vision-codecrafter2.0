@@ -17,24 +17,24 @@ const RadarChartComponent = ({ data }) => {
   // Preprocess data to add line breaks
   const processedData = data.chartData.map(item => ({
     ...item,
-    name: item.name.replace(" ", "\n"), // Replace space with newline (e.g., "general knowledge" -> "general\nknowledge")
+    name: item.name.replace(" ", "\n"),
   }));
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-xl font-medium text-[#10002B] self-start">{data.title}</h2>
-      <ResponsiveContainer  width={500} height={350}>
+      <h2 className="text-xl font-medium text-[#10002B] self-start mb-4">{data.title}</h2>
+      <ResponsiveContainer width={500} height={350}>
         <RadarChart cx="50%" cy="50%" outerRadius="85%" data={processedData}>
           <PolarGrid />
           <PolarAngleAxis
             dataKey="name"
             tick={(props) => {
               const { x, y, textAnchor, payload } = props;
-              const value = payload?.value || "N/A"; // Fallback for undefined value
+              const value = payload?.value || "N/A";
 
               // Calculate the angle and offset the position by 10px
-              const angle = Math.atan2(y - 150, x - 350); // Center at (350, 150)
-              const offset = 10; // 10px distance
+              const angle = Math.atan2(y - 175, x - 250); // Adjusted center point
+              const offset = 10;
               const newX = x + offset * Math.cos(angle);
               const newY = y + offset * Math.sin(angle);
 
@@ -43,7 +43,7 @@ const RadarChartComponent = ({ data }) => {
                   x={newX}
                   y={newY}
                   textAnchor={textAnchor}
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "14px", fill: "#10002B" }}
                 >
                   {value.split("\n").map((line, i) => (
                     <tspan key={i} x={newX} dy={i * 12}>
@@ -54,11 +54,26 @@ const RadarChartComponent = ({ data }) => {
               );
             }}
           />
-          <PolarRadiusAxis />
-          <Tooltip />
-          <Radar dataKey="yourinvestment" stroke="#3C096C" fill="#C77DFF" fillOpacity={0.6} />
-          
-          <Radar dataKey="max" stroke="#E0AAFF" fill="#5A189A" fillOpacity={0.3} />
+          <PolarRadiusAxis 
+            domain={[0, 100]} // Set the scale from 0 to 100 since we're using percentages
+          />
+          <Tooltip 
+            formatter={(value, name) => [`${value}%`, name]}
+          />
+          <Radar 
+            name="Your Investment"
+            dataKey="yourScore" 
+            stroke="#3C096C" 
+            fill="#C77DFF" 
+            fillOpacity={0.6} 
+          />
+          <Radar 
+            name="Maximum Allocation"
+            dataKey="maxMarks" 
+            stroke="#E0AAFF" 
+            fill="#5A189A" 
+            fillOpacity={0.3} 
+          />
         </RadarChart>
       </ResponsiveContainer>
     </div>
