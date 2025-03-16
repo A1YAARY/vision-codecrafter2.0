@@ -83,17 +83,17 @@ const Insurance = () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-[#10002b]">
+    <div className="min-h-screen flex bg-[#240046]">
       <div
         ref={sidebarRef}
-        className={`fixed top-0 left-0 h-full bg-[#10002b] text-white z-50 transform ${
+        className={`fixed top-0 left-0 h-full bg-[#240046] text-white z-50 transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out w-64 xl:static xl:translate-x-0`}
       >
         <Sidebar />
       </div>
 
-      <div className="flex-1 bg-gray-100">
+      <div className="flex-1 bg-[#F8EBFF]">
         <Navbar />
 
         <div className="mt-5">

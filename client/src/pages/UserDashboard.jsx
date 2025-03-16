@@ -192,17 +192,17 @@ const UserDashBoard = () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-[#10002b]">
+    <div className="min-h-screen flex bg-[#240046]">
       <div
         ref={sidebarRef}
-        className={`fixed top-0 left-0 h-full bg-[#10002b] text-white z-50 transform ${
+        className={`fixed top-0 left-0 h-full bg-[#240046] text-white z-50 transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out w-64 xl:static xl:translate-x-0`}
       >
         <Sidebar />
       </div>
 
-      <div className="flex-1 bg-gray-100">
+      <div className="flex-1 bg-[#F8EBFF]">
         <Navbar />
 
         <div className="mt-5">
@@ -247,6 +247,22 @@ const UserDashBoard = () => {
                 <p className="text-gray-500">BANKNIFTY</p>
                 <p className="text-xl font-semibold">48,060.40</p>
                 <p className="text-green-500">+3.75 (0.01%)</p>
+              </div>
+            </div>
+            <div className="flex justify-between items-center mt-6">
+              <h2 className="text-lg font-semibold">Your Investments</h2>
+              <a href="#" className="text-green-500">
+                Dashboard
+              </a>
+            </div>
+            <div className="p-4 bg-white shadow rounded-lg mt-4  mb-4 flex justify-between">
+              <div>
+                <p className="text-gray-500">Total Returns</p>
+                <p className="text-xl font-semibold text-red-500">- ₹2,323</p>
+              </div>
+              <div>
+                <p className="text-gray-500">Current Value</p>
+                <p className="text-xl font-semibold">₹19,055</p>
               </div>
             </div>
             <div className="p-4 bg-white shadow rounded-lg mb-6">

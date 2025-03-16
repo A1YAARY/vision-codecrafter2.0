@@ -34,10 +34,10 @@ const Explore = () => {
     };
   }, []);
   return (
-    <div className="min-h-screen flex bg-[#10002b]">
+    <div className="min-h-screen flex bg-[#240046]">
       <div
         ref={sidebarRef}
-        className={`fixed top-0 left-0 h-full bg-[#10002b] text-white z-50 transform ${
+        className={`fixed top-0 left-0 h-full bg-[#240046] text-white z-50 transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out w-64 xl:static xl:translate-x-0`}
       >
@@ -122,7 +122,7 @@ const Explore = () => {
             </div>
 
             {/* Investments Section */}
-            <div className="flex justify-between items-center mt-6">
+           {/*  <div className="flex justify-between items-center mt-6">
               <h2 className="text-lg font-semibold">Your Investments</h2>
               <a href="#" className="text-green-500">
                 Dashboard
@@ -137,7 +137,7 @@ const Explore = () => {
                 <p className="text-gray-500">Current Value</p>
                 <p className="text-xl font-semibold">₹19,055</p>
               </div>
-            </div>
+            </div> */}
 
             {/* Watchlist Section */}
             <div className="flex justify-between items-center mt-6">
