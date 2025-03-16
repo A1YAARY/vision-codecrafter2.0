@@ -1,8 +1,16 @@
 import RotatingText from '../components/RotatingText';
 import SimpleLineChart from '../components/analytics/SimpleLineChart';
+import { useNavigate } from "react-router-dom";
+
 
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/login"); // Replace with your route
+  };
+
   return (
     <div className=' bg-gradient-to-b z-50 from-[#10002B] to-[#E0AAFF]'>
         
@@ -30,9 +38,15 @@ const Hero = () => {
             <p className="text-xl md:text-2xl mt-4 mb-4 max-w-2xl text-[#E2ADFF] mx-auto">
               With VisionInvest
             </p>
-            <button className="bg-[#10002b] text-[#FFFFFF] px-8 py-3 rounded-lg font-semibold">
-              Get Started
-            </button>
+            
+           
+
+   
+             <button onClick={handleClick} className="bg-[#10002b] text-[#FFFFFF] px-8 py-3 rounded-lg font-semibold">
+                Get Started
+             </button>
+
+
          
           <SimpleLineChart />
           
