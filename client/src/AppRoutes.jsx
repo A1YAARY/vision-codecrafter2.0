@@ -18,7 +18,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/dashboard" element={<UserDashBoard />} />
       <Route path="/userdetails" element={<UserDetails />} />
@@ -26,7 +26,7 @@ const AppRoutes = () => {
       <Route path="/mutualfunds" element={<MutualFund/>} />
       <Route path="/bonds" element={<Bonds/>} />
       <Route path="/explore" element={<Explore/>} />
-      <Route path="/landing" element={<LandingPage />} />
+      <Route path="/" element={<LandingPage />} />
       <Route path="/insurance" element={<Insurance />} />
       <Route path="/stock-screen" element={<StockScreen />} />
      
