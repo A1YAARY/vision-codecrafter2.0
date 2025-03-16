@@ -16,7 +16,7 @@ function Footer() {
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               
               <div>
-                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">About us</h2>
+                  
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
                       <li class="mb-4">
                           <a href="https://github.com/A1YAARY/vision-codecrafter2.0" class="hover:underline ">Github</a>
@@ -27,16 +27,16 @@ function Footer() {
               <div>
                   <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white">Our Team</h2>
                   <li>
-                          <a href="https://tailwindcss.com/" class="hover:underline text-white">Siddeesh Navthale</a>
+                          <a href="https://github.com/sidd-pixel" class="hover:underline text-white">Siddhant Thakur</a>
                       </li>
                       <li>
-                          <a href="https://tailwindcss.com/" class="hover:underline text-white">Siddeesh Navthale</a>
+                          <a href="https://github.com/Siddesh755" class="hover:underline text-white">Siddeesh Navthale</a>
                       </li>
                       <li>
-                          <a href="https://tailwindcss.com/" class="hover:underline text-white">Siddeesh Navthale</a>
+                          <a href="https://github.com/aryanmore33" class="hover:underline text-white">Aryan More</a>
                       </li>
                   <li>
-                          <a href="https://tailwindcss.com/" class="hover:underline text-white">Siddeesh Navthale</a>
+                          <a href="https://github.com/A1YAARY" class="hover:underline text-white">Harsh Poojary</a>
                       </li>
               </div>
           </div>
