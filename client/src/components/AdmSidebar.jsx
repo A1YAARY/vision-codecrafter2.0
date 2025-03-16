@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/Logo.svg";
+import logo from "../assets/VisionInvest.svg";
 
 
 const Sidebar = () => {
@@ -26,7 +26,7 @@ const Sidebar = () => {
         href="/dashboard"
         className="flex items-center space-x-3 rtl:space-x-reverse"
       >
-        <img src={logo} className="h-8" alt="Flowbite Logo" />
+        <img src={logo} className="h-10" alt="Flowbite Logo" />
       </a>
       <ul className="list-none p-0 m-0">
         <li
