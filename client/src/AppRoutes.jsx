@@ -14,28 +14,57 @@ import StockScreen from "./pages/StockScreen";
 import AdmDashBoard from "./pages/admin/AdmDashBoard";
 import UserList from "./pages/admin/UserList";
 import AdminDetails from "./pages/admin/AdminDetails";
+import ProtectedRoute from "./protectedRoutes";
 
 const AppRoutes = () => {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/dashboard" element={<UserDashBoard />} />
-      <Route path="/userdetails" element={<UserDetails />} />
-      <Route path="/stock" element={<Stock />} />
-      <Route path="/mutualfunds" element={<MutualFund/>} />
-      <Route path="/bonds" element={<Bonds/>} />
-      <Route path="/explore" element={<Explore/>} />
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/insurance" element={<Insurance />} />
-      <Route path="/stock/:stockSymbol" element={<StockScreen />} />
+      <Route path="/login" element={
+        
+        <Login />
+        } />
+      <Route path="/signup" element={
+        <SignUp />} />
+      <Route path="/dashboard" element={
+        <ProtectedRoute allowedRoles={["User"]}><UserDashBoard /></ProtectedRoute>
+        } />
+      <Route path="/userdetails" element={
+         <ProtectedRoute allowedRoles={["User"]}><UserDetails /></ProtectedRoute>
+        } />
+      <Route path="/stock" element={
+        <ProtectedRoute allowedRoles={["User"]}><Stock /></ProtectedRoute>
+        } />
+      <Route path="/mutualfunds" element={
+        <ProtectedRoute allowedRoles={["User"]}><MutualFund/></ProtectedRoute>
+        } />
+      <Route path="/bonds" element={
+        <ProtectedRoute allowedRoles={["User"]}> <Bonds/></ProtectedRoute>
+       } />
+      <Route path="/explore" element={
+        <ProtectedRoute allowedRoles={["User"]}><Explore/></ProtectedRoute>
+       } />
+      <Route path="/" element={
+        <ProtectedRoute allowedRoles={["User"]}><LandingPage /></ProtectedRoute>
+        } />
+      <Route path="/insurance" element={
+        <ProtectedRoute allowedRoles={["User"]}><Insurance /></ProtectedRoute>
+        } />
+      <Route path="/stock/:stockSymbol" element={
+        <ProtectedRoute allowedRoles={["User"]}>  <StockScreen /></ProtectedRoute>
+      } />
      
 
      {/* admin Routes */}
-     <Route path="/admin/dashboard" element={<AdmDashBoard/>} />
-     <Route path="/admin/user" element={<UserList/>} />
-     <Route path="/admin/details" element={<AdminDetails/>} />
+     <Route path="/admin/dashboard" element={
+      <ProtectedRoute allowedRoles={["Admin"]}><AdmDashBoard/></ProtectedRoute>
+      } />
+     <Route path="/admin/user" element={
+        <ProtectedRoute allowedRoles={["Admin"]}><UserList/></ProtectedRoute>
+      } />
+     <Route path="/admin/details" element={
+              <ProtectedRoute allowedRoles={["Admin"]}>  <AdminDetails/></ProtectedRoute>
+    } />
 
     </Routes>
   );

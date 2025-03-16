@@ -54,8 +54,13 @@ withCredentials :true
   
       // Axios handles non-2xx responses as errors, so if we get here, it was successful
       setSuccess("Login successful!");
-      localStorage.setItem("token", data.token);
-      setTimeout(() => navigate("/dashboard"), 1000);
+      
+      if (data?.user?.role === 'User') {
+        navigate("/dashboard");
+      } else if (data?.user?.role === 'Admin') {
+        navigate("/admin/dashboard");
+      }
+      
       
     } catch (err) {
       // Error handling for axios
