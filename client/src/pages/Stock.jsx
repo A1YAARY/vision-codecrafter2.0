@@ -11,6 +11,20 @@ const Stock = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
 
+  useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+          setSidebarOpen(false);
+        }
+      };
+  
+      document.addEventListener("mousedown", handleClickOutside);
+  
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
+
   // Dummy Indices Data
   const generateIndicesData = (market) => {
     const indicesData = {
@@ -522,15 +536,43 @@ const Stock = () => {
   }, [selectedMarket]);
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100 ">
-      {/* Sidebar */}
-      <div className="lg:w-64 w-full bg-[#10002b] lg:static fixed top-0 left-0 h-full z-50 lg:translate-x-0 transition-transform">
-        <Sidebar />
-      </div>
+    <div className="min-h-screen flex bg-[#10002b]">
+    <div
+      ref={sidebarRef}
+      className={`fixed top-0 left-0 h-full bg-[#10002b] text-white z-50 transform ${
+        sidebarOpen ? "translate-x-0" : "-translate-x-full"
+      } transition-transform duration-300 ease-in-out w-64 xl:static xl:translate-x-0`}
+    >
+      <Sidebar />
+    </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col">
-        <Navbar />
+    <div className="flex-1 bg-gray-100">
+      <Navbar />
+
+      <div className="mt-5">
+        <button
+          className="xl:hidden text-gray-800 ml-4"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        >
+          <svg
+            className="w-7 h-8"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d={
+                sidebarOpen
+                  ? "M6 18L18 6M6 6l12 12"
+                  : "M4 6h16M4 12h16M4 18h16"
+              }
+            />
+          </svg>
+        </button>
 
         <div className="p-4 lg:p-6 flex flex-col xl:flex-row gap-6">
           {/* Left Section - Stocks Data */}
@@ -613,6 +655,7 @@ const Stock = () => {
             <BuyAndSell selectedStock={selectedStock} />
           </div>
         </div>
+      </div>
       </div>
     </div>
 );

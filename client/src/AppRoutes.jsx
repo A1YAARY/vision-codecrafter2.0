@@ -10,6 +10,8 @@ import Bonds from "./pages/Bonds";
 import Explore from "./pages/Explore";
 import LandingPage from "./pages/Landing";
 import Insurance from "./pages/Insurance";
+import StockScreen from "./pages/StockScreen";
+import AdmDashBoard from "./pages/admin/AdmDashBoard";
 
 const AppRoutes = () => {
   return (
@@ -25,7 +27,12 @@ const AppRoutes = () => {
       <Route path="/explore" element={<Explore/>} />
       <Route path="/landing" element={<LandingPage />} />
       <Route path="/insurance" element={<Insurance />} />
+      <Route path="/stock-screen" element={<StockScreen />} />
      
+
+     {/* admin Routes */}
+     <Route path="/admin/dashboard" element={<AdmDashBoard/>} />
+
     </Routes>
   );
 };

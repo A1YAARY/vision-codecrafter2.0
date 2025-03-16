@@ -37,7 +37,7 @@ const Explore = () => {
     <div className="min-h-screen flex bg-[#10002b]">
       <div
         ref={sidebarRef}
-        className={`fixed top-0 left-0 h-full bg-gray-100 text-white z-50 transform ${
+        className={`fixed top-0 left-0 h-full bg-[#10002b] text-white z-50 transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out w-64 xl:static xl:translate-x-0`}
       >

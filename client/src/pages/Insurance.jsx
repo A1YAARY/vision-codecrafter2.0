@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import BuyInsurance from "../components/BuyInsurance";
@@ -8,6 +8,21 @@ const Insurance = () => {
   const [selectedInsurance, setSelectedInsurance] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
+
+  useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+          setSidebarOpen(false);
+        }
+      };
+  
+      document.addEventListener("mousedown", handleClickOutside);
+  
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
+  
 
   // Dummy insurance data
   const insuranceData = {
@@ -69,19 +84,42 @@ const Insurance = () => {
 
   return (
     <div className="min-h-screen flex bg-[#10002b]">
-      {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className={`fixed top-0 left-0 h-full bg-gray-100 z-50 transform ${
+        className={`fixed top-0 left-0 h-full bg-[#10002b] text-white z-50 transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out w-64 xl:static xl:translate-x-0`}
       >
         <Sidebar />
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col bg-gray-100">
+      <div className="flex-1 bg-gray-100">
         <Navbar />
+
+        <div className="mt-5">
+          <button
+            className="xl:hidden text-gray-800 ml-4"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+          >
+            <svg
+              className="w-7 h-8"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d={
+                  sidebarOpen
+                    ? "M6 18L18 6M6 6l12 12"
+                    : "M4 6h16M4 12h16M4 18h16"
+                }
+              />
+            </svg>
+          </button>
 
         <div className="p-6 flex flex-col xl:flex-row gap-6">
           {/* Left Section - Insurance Categories & Plans */}
@@ -144,6 +182,7 @@ const Insurance = () => {
             <BuyInsurance selectedInsurance={selectedInsurance} />
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
