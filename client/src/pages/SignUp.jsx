@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -25,9 +25,9 @@ function SignUp() {
     setIsLoading(true);
     setError(null);
     setSuccess(null);
-
+    const API_BASE_URL = import.meta.env.VITE_APP_REACT_BASE_URL;
     try {
-      const response = await axios.post('http://localhost:3000/api/user/register', {
+      const response = await axios.post(`${API_BASE_URL}/api/user/register`, {
         "name": formData.name,
         "balance": 10000,
         "email": formData.email,
@@ -35,7 +35,8 @@ function SignUp() {
         "dmat_acc_no": formData.dmat,
         "pan": formData.pan,
         "gender": formData.gender,
-        "phone": formData.phone
+        "phone": formData.phone,
+        "role":"Users"
       }, {
         withCredentials: true
       });
