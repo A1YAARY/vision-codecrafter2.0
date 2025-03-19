@@ -33,7 +33,6 @@ function SignUp() {
         "email": formData.email,
         "password": formData.password,
         "dmat_acc_no":  Math.random().toString().slice(2, 8),
-
         "pan": formData.pan,
         "gender": formData.gender,
         "phone": formData.phone,
@@ -100,7 +99,7 @@ function SignUp() {
             Phone Number
           </label>
           <input
-            type="tel"
+            type="text"
             name="phone"
             id="phone"
             value={formData.phone}

@@ -50,23 +50,23 @@ function Navbar() {
   };
 
   return (
-    <nav className="flex items-center justify-between p-4 text-white shadow-md">
+    <nav className="flex items-center justify-end p-4 text-white shadow-md">
       {/* Logo Section - Uncomment if needed */}
       {/* <div className="flex items-center">
         <img src={logo} alt="Logo" className="h-8 w-8 mr-2" />
       </div> */}
 
       {/* Search Bar */}
-      <input
+      {/* <input
         type="text"
         placeholder="Search Stocks..."
         value={searchQuery}
         onChange={handleSearch}
         className="border p-2 rounded-lg w-[45%] focus:outline-none focus:ring-2 focus:ring-purple-600 bg-white text-gray-700 placeholder-gray-400"
-      />
+      /> */}
 
       {/* User Profile Section */}
-      <div className="relative" ref={userDropdownRef}>
+      <div className="relative justify-end" ref={userDropdownRef}>
         <div
           className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full cursor-pointer hover:bg-orange-600 transition-colors"
           onClick={toggleDropdown}

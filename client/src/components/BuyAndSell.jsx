@@ -85,7 +85,7 @@ function BuyAndSell({ selectedStock }) {
       console.log("Trade successful:", response.data);
       await dispatch(setUser(response.data));
 
-      setSuccessMessage("Purchase successful!");
+      setSuccessMessage("Sold successful!");
       setErrorMessage("");
     } catch (error) {
       console.error("Trade failed:", error);

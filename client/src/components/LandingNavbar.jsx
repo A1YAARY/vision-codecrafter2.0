@@ -4,11 +4,12 @@ import vi from "../assets/vi.svg";
 function LandingNavbar() {
   return (
     <nav class=" border-solid  w-full  bg-[#10002B]  z-50 flex  ">
-        <div className="ml-2 ">
-        <img src={vi} alt="vi" className="h-20 w-40 " />
-      </div>
+        
 <div class="container mx-auto mt-2 ">
   <div class="w-full flex  flex-col lg:flex-row">
+  <div className="ml-2 ">
+        <img src={vi} alt="vi" className="h-20 w-40 " />
+      </div>
       <div class=" flex justify-between  lg:flex-row">
          
           

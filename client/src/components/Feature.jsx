@@ -32,7 +32,7 @@ const Feature = () => {
           clickable: true,
         }}
         autoplay={{
-          delay: 5000, 
+          delay: 3000, 
           disableOnInteraction: false,
         }}
         spaceBetween={30}
