@@ -18,8 +18,14 @@ import ProtectedRoute from "./protectedRoutes";
 
 const AppRoutes = () => {
   return (
+    
     <Routes>
       {/* Public Routes */}
+
+      <Route path="/" element={
+        <LandingPage />
+        } />
+        
       <Route path="/login" element={
         
         <Login />
@@ -27,7 +33,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={
         <SignUp />} />
       <Route path="/dashboard" element={
-        <ProtectedRoute allowedRoles={["User"]}><UserDashBoard /></ProtectedRoute>
+    <UserDashBoard />
         } />
       <Route path="/userdetails" element={
          <ProtectedRoute allowedRoles={["User"]}><UserDetails /></ProtectedRoute>
@@ -44,9 +50,7 @@ const AppRoutes = () => {
       <Route path="/explore" element={
         <ProtectedRoute allowedRoles={["User"]}><Explore/></ProtectedRoute>
        } />
-      <Route path="/" element={
-        <ProtectedRoute allowedRoles={["User"]}><LandingPage /></ProtectedRoute>
-        } />
+      
       <Route path="/insurance" element={
         <ProtectedRoute allowedRoles={["User"]}><Insurance /></ProtectedRoute>
         } />

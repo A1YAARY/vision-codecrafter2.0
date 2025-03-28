@@ -24,8 +24,33 @@ function UserList() {
   }, []);
   useEffect(() => {
     setUsers([
-      { id: 1, name: "John Doe", email: "john@example.com" },
-      { id: 2, name: "Jane Smith", email: "jane@example.com" },
+      
+
+     
+        { id: 1, name: "John Doe", email: "john@example.com" },
+        { id: 2, name: "Jane Smith", email: "jane@example.com" },
+        { id: 3, name: "Alice Johnson", email: "alice@example.com" },
+        { id: 4, name: "Bob Brown", email: "bob@example.com" },
+        { id: 5, name: "Charlie White", email: "charlie@example.com" },
+        { id: 6, name: "David Black", email: "david@example.com" },
+        { id: 7, name: "Eve Adams", email: "eve@example.com" },
+        { id: 8, name: "Franklin Green", email: "franklin@example.com" },
+        { id: 9, name: "Grace Miller", email: "grace@example.com" },
+        { id: 10, name: "Hank Wilson", email: "hank@example.com" },
+        { id: 11, name: "Ivy Taylor", email: "ivy@example.com" },
+        { id: 12, name: "Jack Martinez", email: "jack@example.com" },
+        { id: 13, name: "Karen Lee", email: "karen@example.com" },
+        { id: 14, name: "Leo Harris", email: "leo@example.com" },
+        { id: 15, name: "Mia Clark", email: "mia@example.com" },
+        { id: 16, name: "Noah Lewis", email: "noah@example.com" },
+        { id: 17, name: "Olivia Hall", email: "olivia@example.com" },
+        { id: 18, name: "Peter Young", email: "peter@example.com" },
+        { id: 19, name: "Quinn Allen", email: "quinn@example.com" },
+        { id: 20, name: "Ryan Scott", email: "ryan@example.com" }
+    
+      
+    
+      
     ]);
   }, []);
   return (

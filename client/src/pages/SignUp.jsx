@@ -32,11 +32,11 @@ function SignUp() {
         "balance": 10000,
         "email": formData.email,
         "password": formData.password,
-        "dmat_acc_no":  Math.random().toString().slice(2, 8),
+        "dmat_acc_no": Math.random().toString().slice(2, 8),
         "pan": formData.pan,
         "gender": formData.gender,
         "phone": formData.phone,
-        "role":"Users"
+        "role":"User"
       }, {
         withCredentials: true
       });

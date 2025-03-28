@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   const user = useSelector((state) => state.user.user); // Get the user from Redux
 
   if (!user) {
-    // If the user is not logged in, redirect to login
+
     return <Navigate to="/" replace />;
   }
 

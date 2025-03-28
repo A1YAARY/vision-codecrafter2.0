@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import { setUser,clearUser } from "../redux/userSlice";
 
 function BuyAndSell({ selectedStock }) {
   console.log("Selected Stock:", selectedStock);
   
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
   
 
@@ -39,6 +41,10 @@ function BuyAndSell({ selectedStock }) {
     dispatch(clearUser())
 
     try {
+      const totalPrice = quantity * price;
+  const API_BASE_URL = import.meta.env.VITE_APP_REACT_BASE_URL;
+  
+
       const response = await axios.put(`${API_BASE_URL}/api/user/balance`, {
         id: user.id,
         balance: newBalance,
@@ -51,6 +57,7 @@ function BuyAndSell({ selectedStock }) {
 
       setSuccessMessage("Purchase successful!");
       setErrorMessage("");
+      navigate("/stock")
     } catch (error) {
       console.error("Trade failed:", error);
       setErrorMessage("Transaction failed. Please try again.");
@@ -75,6 +82,9 @@ function BuyAndSell({ selectedStock }) {
     dispatch(clearUser())
 
     try {
+      const totalPrice = quantity * price;
+  const API_BASE_URL = import.meta.env.VITE_APP_REACT_BASE_URL;
+  
       const response = await axios.put(`${API_BASE_URL}/api/user/balance`, {
         id: user.id,
         balance: newBalance,
@@ -84,9 +94,11 @@ function BuyAndSell({ selectedStock }) {
 
       console.log("Trade successful:", response.data);
       await dispatch(setUser(response.data));
+      
 
       setSuccessMessage("Sold successful!");
       setErrorMessage("");
+      navigate("/stock")
     } catch (error) {
       console.error("Trade failed:", error);
       setErrorMessage("Transaction failed. Please try again.");
