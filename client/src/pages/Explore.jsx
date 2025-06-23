@@ -168,7 +168,7 @@ const Explore = () => {
                 <p className="text-green-500">+9.80 (2.05%)</p>
               </div>
               <div className="p-4 bg-white shadow rounded-lg">
-                <p>Bank of Baroda</p>
+                <p>State Bank of India</p>
                 <p className="text-lg font-semibold">₹205.52</p>
                 <p className="text-green-500">-3.12 (1.54%)</p>
               </div>

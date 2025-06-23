@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { setUser,clearUser } from "../redux/userSlice";
+import { setUser, clearUser } from "../redux/userSlice";
 
 function BuyAndSell({ selectedStock }) {
   console.log("Selected Stock:", selectedStock);
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
-  
+
 
   const [tradeType, setTradeType] = useState('BUY');
   const [quantity, setQuantity] = useState(1);
@@ -22,87 +22,76 @@ function BuyAndSell({ selectedStock }) {
 
   const totalPrice = quantity * price;
   const API_BASE_URL = import.meta.env.VITE_APP_REACT_BASE_URL;
-  
+
   // Function to handle buy transaction
   const handleBuy = async () => {
-    const currentBalance = parseFloat(userBalance); // Convert string to number
-  const totalCost = parseFloat(totalPrice);
-
-    console.log(`Attempting to buy ${quantity} stocks for ₹${totalPrice}`);
-
+    const currentBalance = parseFloat(userBalance);
+    const totalCost = parseFloat(totalPrice);
+  
     if (currentBalance < totalCost) {
-      console.log("Insufficient balance!");
       setErrorMessage("Insufficient balance!");
       return;
     }
-
+  
     const newBalance = currentBalance - totalCost;
     setUserBalance(newBalance);
-    dispatch(clearUser())
-
-    try {
-      const totalPrice = quantity * price;
-  const API_BASE_URL = import.meta.env.VITE_APP_REACT_BASE_URL;
+    dispatch(clearUser());
   
-
+    try {
       const response = await axios.put(`${API_BASE_URL}/api/user/balance`, {
         id: user.id,
         balance: newBalance,
-      },{
-        withCredentials:true
-      });
-
-      console.log("Trade successful:", response.data);
+      }, { withCredentials: true });
+  
       await dispatch(setUser(response.data));
-
+  
       setSuccessMessage("Purchase successful!");
       setErrorMessage("");
-      navigate("/stock")
+      
+      // REMOVE THIS LINE
+      navigate("/stock");
+  
     } catch (error) {
       console.error("Trade failed:", error);
       setErrorMessage("Transaction failed. Please try again.");
     }
   };
+  
 
   // Function to handle sell transaction
   const handleSell = async () => {
-    const currentBalance = parseFloat(userBalance); // Convert string to number
-  const totalCost = parseFloat(totalPrice);
-
-    console.log(`Attempting to buy ${quantity} stocks for ₹${totalPrice}`);
-
+    const currentBalance = parseFloat(userBalance);
+    const totalCost = parseFloat(totalPrice);
+  
     if (currentBalance < totalCost) {
-      console.log("Insufficient balance!");
       setErrorMessage("Insufficient balance!");
       return;
     }
-
+  
     const newBalance = currentBalance + totalCost;
     setUserBalance(newBalance);
-    dispatch(clearUser())
-
-    try {
-      const totalPrice = quantity * price;
-  const API_BASE_URL = import.meta.env.VITE_APP_REACT_BASE_URL;
+    dispatch(clearUser());
   
+    try {
       const response = await axios.put(`${API_BASE_URL}/api/user/balance`, {
         id: user.id,
         balance: newBalance,
-      },{
-        withCredentials:true
-      });
-
-      console.log("Trade successful:", response.data);
+      }, { withCredentials: true });
+  
       await dispatch(setUser(response.data));
-      
-
-      setSuccessMessage("Sold successful!");
+  
+      setSuccessMessage("Sold successfully!");
       setErrorMessage("");
-      navigate("/stock")
+      
+      // REMOVE THIS LINE
+      // navigate("/stock");
+  
     } catch (error) {
       console.error("Trade failed:", error);
       setErrorMessage("Transaction failed. Please try again.");
-    } };
+    }
+  };
+  
 
   // Handle trade execution
   const handleTrade = async () => {

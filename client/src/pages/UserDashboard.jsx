@@ -28,31 +28,31 @@ const UserDashBoard = () => {
 
   const chartData = [
     // 2023
-    { name: "Jan 23", value: 290 },
-    { name: "Feb 23", value: 305 },
-    { name: "Mar 23", value: 295 }, // slight dip
-    { name: "Apr 23", value: 315 },
-    { name: "May 23", value: 330 },
-    { name: "Jun 23", value: 345 },
-    { name: "Jul 23", value: 335 }, // small drop
-    { name: "Aug 23", value: 360 },
-    { name: "Sep 23", value: 350 }, // fluctuation down
-    { name: "Oct 23", value: 385 },
-    { name: "Nov 23", value: 370 }, // dip before year-end rise
-    { name: "Dec 23", value: 410 },
+    { name: "Jan 23", value: 29 },
+    { name: "Feb 23", value: 35 },
+    { name: "Mar 23", value: 95 }, // slight dip
+    { name: "Apr 23", value: 35 },
+    { name: "May 23", value: 30 },
+    { name: "Jun 23", value: 45 },
+    { name: "Jul 23", value: 33 }, // small drop
+    { name: "Aug 23", value: 36 },
+    { name: "Sep 23", value: 35 }, // fluctuation down
+    { name: "Oct 23", value: 38 },
+    { name: "Nov 23", value: 30 }, // dip before year-end rise
+    { name: "Dec 23", value: 41 },
     // 2024
-    { name: "Jan 24", value: 425 },
-    { name: "Feb 24", value: 415 }, // dip after year start
-    { name: "Mar 24", value: 440 },
-    { name: "Apr 24", value: 460 },
-    { name: "May 24", value: 445 }, // fluctuation down
-    { name: "Jun 24", value: 470 },
-    { name: "Jul 24", value: 485 },
-    { name: "Aug 24", value: 475 }, // slight drop
-    { name: "Sep 24", value: 495 },
-    { name: "Oct 24", value: 510 },
-    { name: "Nov 24", value: 500 }, // dip before final rise
-    { name: "Dec 24", value: 530 },
+    { name: "Jan 24", value: 42 },
+    { name: "Feb 24", value: 41 }, // dip after year start
+    { name: "Mar 24", value: 44 },
+    { name: "Apr 24", value: 60 },
+    { name: "May 24", value: 45 }, // fluctuation down
+    { name: "Jun 24", value: 70 },
+    { name: "Jul 24", value: 85 },
+    { name: "Aug 24", value: 75 }, // slight drop
+    { name: "Sep 24", value: 75 },
+    { name: "Oct 24", value: 10 },
+    { name: "Nov 24", value: 50 }, // dip before final rise
+    { name: "Dec 24", value: 30 },
   ];
   const allStocks = [
     { id: "AAPL", name: "Apple Inc." },
